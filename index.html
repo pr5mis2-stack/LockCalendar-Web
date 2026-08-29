@@ -7,9 +7,26 @@
     <title>LookCalendar — Full Monthly Calendar for iPhone Lock Screen</title>
 
     <meta name="description"
-          content="LookCalendar lets you see the entire month at a glance on your iPhone Lock Screen and Apple Watch.">
+          content="LookCalendar lets you see the entire month directly on your iPhone Lock Screen and Apple Watch.">
+
+    <meta name="theme-color" content="#f7f8fc">
 
     <style>
+        :root {
+            --bg: #f7f8fc;
+            --bg-soft: #eef1f7;
+            --card: rgba(255,255,255,.82);
+            --text: #1d2433;
+            --text-soft: #697386;
+            --blue: #2563eb;
+            --blue-soft: #e8f0ff;
+            --border: #e2e7f0;
+            --dark: #161922;
+            --shadow: 0 20px 60px rgba(25, 35, 60, .10);
+            --radius: 24px;
+            --max-width: 1120px;
+        }
+
         * {
             box-sizing: border-box;
         }
@@ -24,12 +41,15 @@
                 -apple-system,
                 BlinkMacSystemFont,
                 "Segoe UI",
-                Roboto,
-                Helvetica,
+                "Apple SD Gothic Neo",
+                "Noto Sans KR",
                 Arial,
                 sans-serif;
-            background: #f5f6fa;
-            color: #202124;
+
+            background:
+                radial-gradient(circle at top, #ffffff 0%, #f7f8fc 42%, #eef1f7 100%);
+
+            color: var(--text);
             line-height: 1.6;
         }
 
@@ -38,325 +58,636 @@
             text-decoration: none;
         }
 
-        /* =========================
-           Header
-        ========================= */
+        /* ==================================================
+           HEADER
+        ================================================== */
 
         header {
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(255,255,255,0.92);
+
             backdrop-filter: blur(16px);
-            border-bottom: 1px solid #e6e8ef;
+            background: rgba(247,248,252,.78);
+
+            border-bottom: 1px solid rgba(226,231,240,.8);
         }
 
         .nav {
-            max-width: 1100px;
+            max-width: var(--max-width);
             margin: 0 auto;
+
             padding: 16px 28px;
+
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
         }
 
-        .logo {
-            font-size: 24px;
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
             font-weight: 800;
-            letter-spacing: -0.5px;
+            font-size: 21px;
+            letter-spacing: -.5px;
+        }
+
+        .brand-icon {
+            width: 34px;
+            height: 34px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+
+            box-shadow: 0 6px 18px rgba(20,30,50,.08);
         }
 
         .nav-links {
             display: flex;
+            align-items: center;
             gap: 28px;
+
             font-size: 14px;
-            color: #5f6368;
+            color: var(--text-soft);
         }
 
         .nav-links a:hover {
-            color: #000;
+            color: var(--blue);
         }
 
-        /* =========================
-           Hero
-        ========================= */
+        /* ==================================================
+           HERO
+        ================================================== */
 
         .hero {
-            max-width: 1100px;
+            max-width: var(--max-width);
             margin: 0 auto;
-            padding: 100px 28px 80px;
+
+            padding: 110px 28px 80px;
+
             text-align: center;
         }
 
         .badge {
-            display: inline-block;
-            padding: 8px 16px;
-            background: #eaf2ff;
-            color: #2b6cb0;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+
+            padding: 8px 15px;
+
+            background: var(--blue-soft);
+            color: #2563b8;
+
             border-radius: 999px;
+
             font-size: 14px;
             font-weight: 700;
-            margin-bottom: 24px;
         }
 
         h1 {
-            margin: 0;
-            font-size: clamp(52px, 8vw, 92px);
+            margin: 26px auto 18px;
+
+            max-width: 900px;
+
+            font-size: clamp(48px, 8vw, 92px);
             line-height: 1.05;
-            letter-spacing: -4px;
-            font-weight: 900;
+
+            letter-spacing: -.06em;
+
+            font-weight: 850;
         }
 
-        h1 span {
-            color: #2f7ed8;
+        h1 .blue {
+            color: var(--blue);
         }
 
         .hero-description {
-            max-width: 700px;
-            margin: 28px auto 36px;
-            font-size: 21px;
-            color: #6b7280;
-        }
-
-        .download-button {
-            display: inline-block;
-            padding: 16px 28px;
-            background: #000;
-            color: white;
-            border-radius: 14px;
-            font-weight: 700;
-            transition: transform 0.2s ease;
-        }
-
-        .download-button:hover {
-            transform: translateY(-2px);
-        }
-
-        /* =========================
-           Calendar Preview
-        ========================= */
-
-        .preview {
-            max-width: 850px;
-            margin: 30px auto 100px;
-            padding: 70px 30px;
-            background: linear-gradient(135deg, #24252c, #363841);
-            border-radius: 36px;
-        }
-
-        .calendar {
-            max-width: 480px;
+            max-width: 720px;
             margin: 0 auto;
-            padding: 26px;
-            border-radius: 24px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.25);
-            color: white;
+
+            color: var(--text-soft);
+
+            font-size: clamp(17px, 2vw, 22px);
+            line-height: 1.65;
         }
 
-        .calendar-title {
-            text-align: center;
-            font-size: 24px;
+        .hero-buttons {
+            margin-top: 34px;
+
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            gap: 12px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-height: 54px;
+
+            padding: 0 25px;
+
+            border-radius: 15px;
+
+            font-size: 16px;
+            font-weight: 750;
+
+            transition: .2s ease;
+        }
+
+        .button-primary {
+            background: #11151d;
+            color: white;
+
+            box-shadow: 0 12px 30px rgba(0,0,0,.18);
+        }
+
+        .button-primary:hover {
+            transform: translateY(-2px);
+            background: #000;
+        }
+
+        .button-secondary {
+            background: rgba(255,255,255,.8);
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .button-secondary:hover {
+            transform: translateY(-2px);
+            border-color: #b8c4d8;
+        }
+
+        /* ==================================================
+           CALENDAR PREVIEW
+        ================================================== */
+
+        .preview-wrapper {
+            max-width: 900px;
+            margin: 55px auto 0;
+
+            padding: 48px;
+
+            border-radius: 34px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #222631,
+                    #353946
+                );
+
+            box-shadow:
+                0 35px 90px rgba(28, 35, 55, .25);
+        }
+
+        .widget {
+            max-width: 520px;
+            margin: 0 auto;
+
+            padding: 30px;
+
+            border-radius: 24px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #454954,
+                    #383c46
+                );
+
+            border: 1px solid rgba(255,255,255,.22);
+
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,.1),
+                0 20px 40px rgba(0,0,0,.25);
+        }
+
+        .widget-title {
+            margin-bottom: 24px;
+
+            color: white;
+
+            font-size: 22px;
             font-weight: 800;
-            margin-bottom: 22px;
         }
 
         .calendar-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 10px;
+
+            gap: 9px;
         }
 
         .day {
-            padding: 10px 0;
-            text-align: center;
+            aspect-ratio: 1;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
             border-radius: 10px;
-            background: rgba(255,255,255,0.08);
+
+            background: rgba(255,255,255,.08);
+            color: rgba(255,255,255,.82);
+
             font-size: 14px;
+            font-weight: 600;
         }
 
-        .today {
+        .day.today {
             background: #ff4d45;
             color: white;
+
             font-weight: 800;
+
+            box-shadow: 0 6px 16px rgba(255,77,69,.4);
         }
 
-        /* =========================
-           Features
-        ========================= */
+        /* ==================================================
+           SECTION
+        ================================================== */
 
         section {
-            padding: 90px 28px;
+            padding: 100px 28px;
         }
 
-        .section-container {
-            max-width: 1100px;
+        .container {
+            max-width: var(--max-width);
             margin: 0 auto;
         }
 
-        .section-title {
-            text-align: center;
-            font-size: 42px;
-            letter-spacing: -1.5px;
-            margin-bottom: 16px;
+        .section-label {
+            color: var(--blue);
+
+            font-size: 14px;
+            font-weight: 800;
+
+            text-transform: uppercase;
+            letter-spacing: .08em;
         }
 
-        .section-subtitle {
-            text-align: center;
-            color: #6b7280;
-            max-width: 650px;
-            margin: 0 auto 50px;
+        h2 {
+            margin: 12px 0 16px;
+
+            font-size: clamp(34px, 5vw, 54px);
+            line-height: 1.15;
+
+            letter-spacing: -.04em;
         }
+
+        .section-description {
+            max-width: 720px;
+
+            color: var(--text-soft);
+
+            font-size: 18px;
+        }
+
+        /* ==================================================
+           FEATURES
+        ================================================== */
 
         .features {
+            margin-top: 45px;
+
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+
+            gap: 20px;
         }
 
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 24px;
-            border: 1px solid #e8eaf0;
+        .feature-card {
+            padding: 28px;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius);
+
+            box-shadow: 0 10px 30px rgba(30,40,70,.04);
         }
 
-        .card-icon {
-            font-size: 30px;
-            margin-bottom: 16px;
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 20px;
+
+            background: var(--blue-soft);
+
+            border-radius: 15px;
+
+            font-size: 24px;
         }
 
-        .card h3 {
-            margin: 0 0 10px;
+        .feature-card h3 {
+            margin: 0 0 8px;
+
             font-size: 20px;
         }
 
-        .card p {
+        .feature-card p {
             margin: 0;
-            color: #6b7280;
+
+            color: var(--text-soft);
+            font-size: 15px;
         }
 
-        /* =========================
-           Pricing
-        ========================= */
+        /* ==================================================
+           QUICK LAUNCH
+        ================================================== */
 
-        .pricing-section {
-            background: #eef1f7;
-        }
+        .quick-launch {
+            margin-top: 40px;
 
-        .pricing-box {
-            max-width: 800px;
-            margin: 0 auto;
+            padding: 55px;
+
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 24px;
+
+            gap: 55px;
+            align-items: center;
+
+            border-radius: 32px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #171b24,
+                    #2d3340
+                );
+
+            color: white;
+
+            box-shadow: var(--shadow);
         }
 
-        .pricing-card {
-            background: white;
+        .quick-launch .section-label {
+            color: #8eb7ff;
+        }
+
+        .quick-launch h2 {
+            color: white;
+        }
+
+        .quick-launch p {
+            color: rgba(255,255,255,.68);
+            font-size: 17px;
+        }
+
+        .launch-visual {
+            padding: 25px;
+
             border-radius: 24px;
-            padding: 32px;
-            border: 1px solid #e5e7eb;
+
+            background: rgba(255,255,255,.08);
+            border: 1px solid rgba(255,255,255,.1);
         }
 
-        .pricing-card.pro {
-            border: 2px solid #2f7ed8;
+        .launch-app {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+
+            padding: 15px;
+
+            margin-bottom: 10px;
+
+            border-radius: 15px;
+
+            background: rgba(255,255,255,.08);
         }
 
-        .pricing-card h3 {
-            margin-top: 0;
+        .launch-app:last-child {
+            margin-bottom: 0;
+        }
+
+        .app-icon {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(255,255,255,.12);
+
+            border-radius: 12px;
+        }
+
+        .launch-app strong {
+            display: block;
+        }
+
+        .launch-app span {
+            font-size: 13px;
+            color: rgba(255,255,255,.55);
+        }
+
+        /* ==================================================
+           PRICING
+        ================================================== */
+
+        .pricing-grid {
+            margin-top: 45px;
+
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+        .price-card {
+            padding: 38px;
+
+            border-radius: 28px;
+
+            background: rgba(255,255,255,.85);
+
+            border: 1px solid var(--border);
+        }
+
+        .price-card.pro {
+            border: 2px solid var(--blue);
+
+            box-shadow: 0 20px 50px rgba(37,99,235,.12);
+        }
+
+        .price-card h3 {
+            margin: 0;
+
             font-size: 24px;
         }
 
         .price {
-            font-size: 34px;
-            font-weight: 800;
-            margin-bottom: 20px;
+            margin: 18px 0;
+
+            font-size: 42px;
+            font-weight: 850;
+
+            letter-spacing: -.04em;
         }
 
-        .pricing-card ul {
-            padding-left: 20px;
-            color: #5f6368;
+        .price small {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-soft);
         }
 
-        /* =========================
-           About Developer
-        ========================= */
+        .price-card ul {
+            padding: 0;
+            margin: 25px 0 0;
 
-        .developer-box {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 40px;
-            border-radius: 28px;
-            border: 1px solid #e5e7eb;
+            list-style: none;
         }
 
-        .developer-box h3 {
-            margin-top: 0;
-            font-size: 26px;
+        .price-card li {
+            padding: 10px 0;
+
+            border-bottom: 1px solid #edf0f5;
+
+            color: var(--text-soft);
         }
 
-        .developer-info {
-            margin-top: 24px;
-            display: grid;
-            gap: 10px;
+        .price-card li:last-child {
+            border-bottom: 0;
         }
 
-        .developer-info strong {
-            color: #202124;
-        }
-
-        /* =========================
-           Support
-        ========================= */
-
-        .support-section {
-            background: #eef1f7;
-        }
-
-        .support-box {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 40px;
-            border-radius: 28px;
-            text-align: center;
-            border: 1px solid #e5e7eb;
-        }
-
-        .support-email {
-            display: inline-block;
-            margin-top: 18px;
-            color: #2f7ed8;
+        .included {
+            color: #16803c;
             font-weight: 700;
         }
 
-        /* =========================
-           Footer
-        ========================= */
+        /* ==================================================
+           ABOUT / TRUST
+        ================================================== */
+
+        .trust-box {
+            margin-top: 40px;
+
+            padding: 50px;
+
+            border-radius: 30px;
+
+            background: white;
+
+            border: 1px solid var(--border);
+
+            box-shadow: var(--shadow);
+        }
+
+        .developer-name {
+            margin-bottom: 10px;
+
+            font-size: 30px;
+            font-weight: 850;
+        }
+
+        .developer-role {
+            color: var(--blue);
+            font-weight: 700;
+        }
+
+        .trust-box p {
+            max-width: 760px;
+
+            color: var(--text-soft);
+        }
+
+        .contact-box {
+            margin-top: 25px;
+
+            padding: 22px;
+
+            border-radius: 18px;
+
+            background: var(--bg-soft);
+        }
+
+        .contact-box strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .contact-email {
+            color: var(--blue);
+            font-weight: 700;
+        }
+
+        /* ==================================================
+           FOOTER
+        ================================================== */
 
         footer {
-            padding: 50px 28px;
-            text-align: center;
-            color: #6b7280;
-            font-size: 14px;
+            padding: 55px 28px 40px;
+
+            border-top: 1px solid var(--border);
+
+            background: rgba(255,255,255,.55);
+        }
+
+        .footer-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 25px;
+        }
+
+        .footer-brand {
+            font-weight: 800;
         }
 
         .footer-links {
             display: flex;
-            justify-content: center;
-            gap: 24px;
-            margin-bottom: 20px;
+            flex-wrap: wrap;
+
+            gap: 20px;
+
+            font-size: 14px;
+            color: var(--text-soft);
         }
 
         .footer-links a:hover {
-            color: #000;
+            color: var(--blue);
         }
 
-        /* =========================
-           Mobile
-        ========================= */
+        .copyright {
+            margin-top: 30px;
+
+            max-width: var(--max-width);
+            margin-left: auto;
+            margin-right: auto;
+
+            color: #98a1b2;
+
+            font-size: 13px;
+        }
+
+        /* ==================================================
+           MOBILE
+        ================================================== */
 
         @media (max-width: 800px) {
 
@@ -364,193 +695,270 @@
                 display: none;
             }
 
-            h1 {
-                letter-spacing: -2px;
+            .hero {
+                padding-top: 80px;
+            }
+
+            .preview-wrapper {
+                padding: 25px;
+            }
+
+            .widget {
+                padding: 20px;
+            }
+
+            .day {
+                font-size: 12px;
             }
 
             .features {
                 grid-template-columns: 1fr;
             }
 
-            .pricing-box {
+            .quick-launch {
+                grid-template-columns: 1fr;
+                padding: 32px;
+                gap: 30px;
+            }
+
+            .pricing-grid {
                 grid-template-columns: 1fr;
             }
 
-            .preview {
-                margin-left: 18px;
-                margin-right: 18px;
-                padding: 40px 18px;
+            .trust-box {
+                padding: 32px;
             }
 
-            section {
-                padding: 70px 20px;
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
+
     </style>
 </head>
 
 <body>
 
+
+<!-- ==================================================
+     HEADER
+================================================== -->
+
 <header>
     <nav class="nav">
 
-        <a href="#" class="logo">
-            📅 LookCalendar
+        <a href="#top" class="brand">
+            <span class="brand-icon">📅</span>
+            <span>룩캘린더</span>
         </a>
 
         <div class="nav-links">
-            <a href="#features">Features</a>
-            <a href="#quicklaunch">Quick Launch</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#developer">Developer</a>
+            <a href="#features">특징</a>
+            <a href="#quicklaunch">빠른 실행</a>
+            <a href="#pricing">가격</a>
+            <a href="#about">개발자</a>
         </div>
 
     </nav>
 </header>
 
 
-<!-- =========================
-     HERO
-========================= -->
+<main id="top">
 
-<main>
+
+<!-- ==================================================
+     HERO
+================================================== -->
 
 <section class="hero">
 
     <div class="badge">
-        Full Monthly Calendar for iPhone Lock Screen
+        📱 iPhone Lock Screen Monthly Calendar
     </div>
 
     <h1>
-        See the <span>whole month.</span><br>
-        At a glance.
+        <span class="blue">한 달 일정</span>을<br>
+        한눈에 확인하세요.
     </h1>
 
     <p class="hero-description">
-        LookCalendar lets you see the entire month directly on your
-        iPhone Lock Screen and Apple Watch.
+        LookCalendar는 전체 월별 달력을 iPhone 잠금 화면과
+        Apple Watch에서 바로 확인할 수 있는 심플한 캘린더 위젯입니다.
     </p>
 
-    <a
-        class="download-button"
-        href="https://apps.apple.com/us/app/lookcalendar/id6792032535"
-        target="_blank"
-        rel="noopener"
-    >
-        Download on the App Store
-    </a>
+    <div class="hero-buttons">
 
-</section>
+        <a class="button button-primary"
+           href="https://apps.apple.com/us/app/lookcalendar/id6792032535"
+           target="_blank"
+           rel="noopener">
+            App Store에서 다운로드
+        </a>
+
+        <a class="button button-secondary"
+           href="#features">
+            기능 알아보기
+        </a>
+
+    </div>
 
 
-<!-- =========================
-     CALENDAR PREVIEW
-========================= -->
+    <!-- Calendar Preview -->
 
-<div class="preview">
+    <div class="preview-wrapper">
 
-    <div class="calendar">
+        <div class="widget">
 
-        <div class="calendar-title">
-            LookCalendar
-        </div>
+            <div class="widget-title">
+                룩캘린더
+            </div>
 
-        <div class="calendar-grid">
+            <div class="calendar-grid">
 
-            <div class="day">1</div>
-            <div class="day">2</div>
-            <div class="day">3</div>
-            <div class="day">4</div>
-            <div class="day">5</div>
-            <div class="day">6</div>
-            <div class="day">7</div>
+                <div class="day">1</div>
+                <div class="day">2</div>
+                <div class="day">3</div>
+                <div class="day">4</div>
+                <div class="day">5</div>
+                <div class="day">6</div>
+                <div class="day">7</div>
 
-            <div class="day">8</div>
-            <div class="day">9</div>
-            <div class="day">10</div>
-            <div class="day">11</div>
-            <div class="day">12</div>
-            <div class="day">13</div>
-            <div class="day">14</div>
+                <div class="day">8</div>
+                <div class="day">9</div>
+                <div class="day">10</div>
+                <div class="day">11</div>
+                <div class="day">12</div>
+                <div class="day">13</div>
+                <div class="day">14</div>
 
-            <div class="day">15</div>
-            <div class="day">16</div>
-            <div class="day today">17</div>
-            <div class="day">18</div>
-            <div class="day">19</div>
-            <div class="day">20</div>
-            <div class="day">21</div>
+                <div class="day">15</div>
+                <div class="day">16</div>
+                <div class="day today">17</div>
+                <div class="day">18</div>
+                <div class="day">19</div>
+                <div class="day">20</div>
+                <div class="day">21</div>
 
-            <div class="day">22</div>
-            <div class="day">23</div>
-            <div class="day">24</div>
-            <div class="day">25</div>
-            <div class="day">26</div>
-            <div class="day">27</div>
-            <div class="day">28</div>
+                <div class="day">22</div>
+                <div class="day">23</div>
+                <div class="day">24</div>
+                <div class="day">25</div>
+                <div class="day">26</div>
+                <div class="day">27</div>
+                <div class="day">28</div>
+
+            </div>
 
         </div>
 
     </div>
 
-</div>
+</section>
 
 
-<!-- =========================
+<!-- ==================================================
      FEATURES
-========================= -->
+================================================== -->
 
 <section id="features">
 
-    <div class="section-container">
+    <div class="container">
 
-        <h2 class="section-title">
-            Your month, always visible
+        <div class="section-label">
+            Features
+        </div>
+
+        <h2>
+            달력을 열지 않아도<br>
+            이번 달을 확인할 수 있습니다.
         </h2>
 
-        <p class="section-subtitle">
-            Check your schedule without opening your calendar app.
+        <p class="section-description">
+            날짜나 다음 일정을 보여주는 일반적인 위젯과 달리,
+            LookCalendar는 현재 달 전체를 한눈에 볼 수 있도록 만들었습니다.
         </p>
+
 
         <div class="features">
 
-            <div class="card">
+            <div class="feature-card">
 
-                <div class="card-icon">📅</div>
+                <div class="feature-icon">📅</div>
 
-                <h3>Full Monthly Calendar</h3>
+                <h3>전체 월간 달력</h3>
 
                 <p>
-                    See the entire current month directly on your
-                    iPhone Lock Screen.
+                    현재 달의 전체 날짜를 iPhone 잠금 화면에서
+                    빠르게 확인할 수 있습니다.
                 </p>
 
             </div>
 
 
-            <div class="card">
+            <div class="feature-card">
 
-                <div class="card-icon">🔴</div>
+                <div class="feature-icon">🔴</div>
 
-                <h3>Today at a Glance</h3>
+                <h3>오늘 날짜 강조</h3>
 
                 <p>
-                    Today is clearly highlighted so you can quickly
-                    understand where you are in the month.
+                    작은 위젯에서도 오늘 날짜를 쉽게 찾을 수 있도록
+                    명확하게 표시합니다.
                 </p>
 
             </div>
 
 
-            <div class="card">
+            <div class="feature-card">
 
-                <div class="card-icon">⌚</div>
+                <div class="feature-icon">⌚</div>
 
-                <h3>Apple Watch Support</h3>
+                <h3>Apple Watch 지원</h3>
 
                 <p>
-                    Keep a monthly calendar available on your
-                    Apple Watch as well.
+                    Apple Watch에서도 월간 달력을 확인할 수 있습니다.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">📌</div>
+
+                <h3>일정 표시</h3>
+
+                <p>
+                    일정이 있는 날짜를 표시하여
+                    중요한 날짜를 빠르게 확인할 수 있습니다.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">🎨</div>
+
+                <h3>여러 위젯 스타일</h3>
+
+                <p>
+                    잠금 화면에서 보기 좋은 다양한 스타일을 제공합니다.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">⚡</div>
+
+                <h3>빠른 실행</h3>
+
+                <p>
+                    원하는 캘린더 앱을 선택해
+                    빠르게 실행할 수 있습니다.
                 </p>
 
             </div>
@@ -562,43 +970,96 @@
 </section>
 
 
-<!-- =========================
+<!-- ==================================================
      QUICK LAUNCH
-========================= -->
+================================================== -->
 
-<section id="quicklaunch" class="pricing-section">
+<section id="quicklaunch">
 
-    <div class="section-container">
+    <div class="container">
 
-        <h2 class="section-title">
-            Use the calendar app you already love
-        </h2>
+        <div class="quick-launch">
 
-        <p class="section-subtitle">
-            LookCalendar is designed to complement your favorite calendar app,
-            not replace it.
-        </p>
+            <div>
 
-        <div class="developer-box">
+                <div class="section-label">
+                    Quick Launch
+                </div>
 
-            <h3>🚀 Quick Launch</h3>
+                <h2>
+                    이미 사용 중인<br>
+                    캘린더 앱을 그대로 사용하세요.
+                </h2>
 
-            <p>
-                Everyone has their own preferred calendar app.
-                Some people use Apple Calendar, Google Calendar,
-                NAVER Calendar, or other calendar apps.
-            </p>
+                <p>
+                    LookCalendar는 Apple Calendar나 Google Calendar를
+                    대체하려는 앱이 아닙니다.
+                </p>
 
-            <p>
-                With Quick Launch, you can choose a supported calendar app
-                and quickly open it when you need to view or manage
-                your schedule in more detail.
-            </p>
+                <p>
+                    사람마다 이미 익숙한 캘린더 앱이 있기 때문에,
+                    LookCalendar에서는 원하는 캘린더 앱을 선택하고
+                    필요할 때 빠르게 실행할 수 있습니다.
+                </p>
 
-            <p>
-                We are actively collecting feedback about additional
-                calendar apps users would like us to support.
-            </p>
+                <p>
+                    앞으로 사용자 피드백을 통해 더 많은 인기 캘린더 앱을
+                    지원할 예정입니다.
+                </p>
+
+            </div>
+
+
+            <div class="launch-visual">
+
+                <div class="launch-app">
+
+                    <div class="app-icon">🍎</div>
+
+                    <div>
+                        <strong>Apple Calendar</strong>
+                        <span>Supported calendar app</span>
+                    </div>
+
+                </div>
+
+
+                <div class="launch-app">
+
+                    <div class="app-icon">🟦</div>
+
+                    <div>
+                        <strong>Google Calendar</strong>
+                        <span>Supported calendar app</span>
+                    </div>
+
+                </div>
+
+
+                <div class="launch-app">
+
+                    <div class="app-icon">🟩</div>
+
+                    <div>
+                        <strong>NAVER Calendar</strong>
+                        <span>Supported calendar app</span>
+                    </div>
+
+                </div>
+
+
+                <div class="launch-app">
+
+                    <div class="app-icon">➕</div>
+
+                    <div>
+                        <strong>More apps coming</strong>
+                        <span>Based on user feedback</span>
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -607,62 +1068,124 @@
 </section>
 
 
-<!-- =========================
+<!-- ==================================================
      PRICING
-========================= -->
+================================================== -->
 
 <section id="pricing">
 
-    <div class="section-container">
+    <div class="container">
 
-        <h2 class="section-title">
-            Simple pricing
+        <div class="section-label">
+            Pricing
+        </div>
+
+        <h2>
+            대부분의 기능은 무료입니다.
         </h2>
 
-        <p class="section-subtitle">
-            No subscription. The core calendar experience is free.
+        <p class="section-description">
+            LookCalendar의 핵심 기능과 월간 캘린더 위젯은 무료로 사용할 수 있습니다.
+            빠른 실행 기능만 Pro 옵션으로 제공됩니다.
         </p>
 
-        <div class="pricing-box">
 
-            <div class="pricing-card">
+        <div class="pricing-grid">
+
+
+            <!-- FREE -->
+
+            <div class="price-card">
 
                 <h3>Free</h3>
 
                 <div class="price">
-                    $0
+                    무료
                 </div>
 
+                <p class="section-description">
+                    LookCalendar의 핵심 기능을 무료로 사용할 수 있습니다.
+                </p>
+
                 <ul>
-                    <li>Full monthly Lock Screen calendar</li>
-                    <li>Monthly Apple Watch calendar</li>
-                    <li>Multiple calendar styles</li>
-                    <li>Today highlighting</li>
-                    <li>Calendar event indicators</li>
+
+                    <li>
+                        <span class="included">✓</span>
+                        iPhone 월간 잠금화면 위젯
+                    </li>
+
+                    <li>
+                        <span class="included">✓</span>
+                        전체 월간 달력
+                    </li>
+
+                    <li>
+                        <span class="included">✓</span>
+                        오늘 날짜 강조
+                    </li>
+
+                    <li>
+                        <span class="included">✓</span>
+                        일정 표시
+                    </li>
+
+                    <li>
+                        <span class="included">✓</span>
+                        다양한 위젯 스타일
+                    </li>
+
+                    <li>
+                        <span class="included">✓</span>
+                        Apple Watch 월간 달력
+                    </li>
+
                 </ul>
 
             </div>
 
 
-            <div class="pricing-card pro">
+            <!-- PRO -->
 
-                <h3>LookCalendar Pro</h3>
+            <div class="price-card pro">
+
+                <h3>Pro</h3>
 
                 <div class="price">
                     $2.99
+                    <small>one-time purchase</small>
                 </div>
 
-                <p><strong>One-time purchase.</strong></p>
+                <p class="section-description">
+                    구독 없이 한 번 구매하면 계속 사용할 수 있습니다.
+                </p>
 
                 <ul>
-                    <li>Quick Launch</li>
-                    <li>Open your preferred supported calendar app</li>
-                    <li>No subscription</li>
-                    <li>No recurring payments</li>
+
+                    <li>
+                        <span class="included">✓</span>
+                        Free 기능 전체 포함
+                    </li>
+
+                    <li>
+                        <span class="included">✓</span>
+                        Quick Launch
+                    </li>
+
+                    <li>
+                        <span class="included">✓</span>
+                        원하는 캘린더 앱 빠른 실행
+                    </li>
+
+                    <li>
+                        <span class="included">✓</span>
+                        <strong>No subscription</strong>
+                    </li>
+
                 </ul>
 
             </div>
 
+
         </div>
 
     </div>
@@ -670,53 +1193,59 @@
 </section>
 
 
-<!-- =========================
-     DEVELOPER
-========================= -->
+<!-- ==================================================
+     ABOUT / TRUST
+================================================== -->
 
-<section id="developer">
+<section id="about">
 
-    <div class="section-container">
+    <div class="container">
 
-        <h2 class="section-title">
+        <div class="section-label">
             About the Developer
+        </div>
+
+        <h2>
+            Independent developer.<br>
+            Real person behind the app.
         </h2>
 
-        <p class="section-subtitle">
-            LookCalendar is independently developed and maintained.
-        </p>
 
-        <div class="developer-box">
+        <div class="trust-box">
 
-            <h3>Eunkyu Choi</h3>
+            <div class="developer-name">
+                Eunkyu Choi
+            </div>
+
+            <div class="developer-role">
+                Independent iOS Developer · South Korea
+            </div>
 
             <p>
-                LookCalendar is an independent iOS application
-                developed and maintained by Eunkyu Choi.
+                LookCalendar is independently developed and maintained by
+                Eunkyu Choi.
             </p>
 
             <p>
-                The app was created to solve a simple everyday problem:
-                checking the entire month without needing to open
-                a full calendar application.
+                This is an independent software project.
+                I personally develop, maintain, and continue improving the app
+                based on user feedback.
             </p>
 
-            <div class="developer-info">
+            <p>
+                My goal is to build simple and useful apps that solve small
+                everyday problems without unnecessary complexity.
+            </p>
 
-                <div>
-                    <strong>Developer:</strong> Eunkyu Choi
-                </div>
 
-                <div>
-                    <strong>Project:</strong> LookCalendar
-                </div>
+            <div class="contact-box">
 
-                <div>
-                    <strong>Contact:</strong>
-                    <a href="mailto:lookcalendar.help@gmail.com">
-                        lookcalendar.help@gmail.com
-                    </a>
-                </div>
+                <strong>Contact</strong>
+
+                <a class="contact-email"
+                   href="mailto:lookcalendar.help@gmail.com">
+                    lookcalendar.help@gmail.com
+                </a>
 
             </div>
 
@@ -727,74 +1256,84 @@
 </section>
 
 
-<!-- =========================
-     SUPPORT
-========================= -->
+<!-- ==================================================
+     APP STORE CTA
+================================================== -->
 
-<section class="support-section">
+<section>
 
-    <div class="section-container">
+    <div class="container" style="text-align:center;">
 
-        <div class="support-box">
+        <div class="section-label">
+            Available on the App Store
+        </div>
 
-            <h2>Support & Feedback</h2>
+        <h2>
+            이번 달을<br>
+            잠금 화면에서 확인하세요.
+        </h2>
 
-            <p>
-                Have a question, found a bug, or want another
-                calendar app supported?
-            </p>
+        <p class="section-description"
+           style="margin:0 auto 30px;">
+            LookCalendar를 무료로 다운로드하고
+            전체 월간 달력을 iPhone 잠금 화면에서 확인해 보세요.
+        </p>
 
-            <p>
-                Please contact us anytime.
-            </p>
+        <a class="button button-primary"
+           href="https://apps.apple.com/us/app/lookcalendar/id6792032535"
+           target="_blank"
+           rel="noopener">
+            📱 Download LookCalendar
+        </a>
 
-            <a
-                class="support-email"
-                href="mailto:lookcalendar.help@gmail.com"
-            >
-                ✉️ lookcalendar.help@gmail.com
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
+
+<footer>
+
+    <div class="footer-inner">
+
+        <div class="footer-brand">
+            📅 LookCalendar
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="privacy.html">
+                Privacy Policy
+            </a>
+
+            <a href="terms.html">
+                Terms of Service
+            </a>
+
+            <a href="mailto:lookcalendar.help@gmail.com">
+                Contact
             </a>
 
         </div>
 
     </div>
 
-</section>
 
-</main>
+    <div class="copyright">
 
+        © 2026 Eunkyu Choi. LookCalendar is independently developed and maintained.
 
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer>
-
-    <div class="footer-links">
-
-        <a href="privacy.html">
-            Privacy Policy
-        </a>
-
-        <a href="terms.html">
-            Terms of Service
-        </a>
-
-        <a
-            href="https://apps.apple.com/us/app/lookcalendar/id6792032535"
-            target="_blank"
-            rel="noopener"
-        >
-            App Store
-        </a>
-
-    </div>
-
-    <div>
-        © 2026 Eunkyu Choi · LookCalendar
     </div>
 
 </footer>
+
 
 </body>
 </html>
