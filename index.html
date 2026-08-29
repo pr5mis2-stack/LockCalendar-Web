@@ -1,32 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>LookCalendar – Full Monthly Calendar for iPhone Lock Screen</title>
+    <title>LookCalendar — Full Monthly Calendar for iPhone Lock Screen</title>
 
     <meta name="description"
-          content="LookCalendar lets you see your entire monthly calendar directly on your iPhone Lock Screen and Apple Watch.">
-
-    <meta name="keywords"
-          content="LookCalendar, calendar widget, iPhone Lock Screen, monthly calendar, Apple Watch calendar">
-
-    <meta name="author" content="Eunkyu Choi">
-
-    <meta property="og:title"
-          content="LookCalendar – Full Monthly Calendar for iPhone Lock Screen">
-
-    <meta property="og:description"
-          content="See your entire month at a glance, directly on your iPhone Lock Screen.">
-
-    <meta property="og:type" content="website">
-
-    <meta property="og:url"
-          content="https://pr5mis2-stack.github.io/LockCalendar-Web/">
+          content="LookCalendar lets you see the entire month at a glance on your iPhone Lock Screen and Apple Watch.">
 
     <style>
-
         * {
             box-sizing: border-box;
         }
@@ -40,13 +23,13 @@
             font-family:
                 -apple-system,
                 BlinkMacSystemFont,
-                "SF Pro Display",
-                "SF Pro Text",
                 "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
                 sans-serif;
-
-            background: #f5f5f7;
-            color: #1d1d1f;
+            background: #f5f6fa;
+            color: #202124;
             line-height: 1.6;
         }
 
@@ -56,43 +39,38 @@
         }
 
         /* =========================
-           HEADER
+           Header
         ========================= */
 
         header {
             position: sticky;
             top: 0;
             z-index: 100;
-
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-
-            border-bottom: 1px solid #e5e5e7;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid #e6e8ef;
         }
 
         .nav {
             max-width: 1100px;
-            margin: auto;
-
-            padding: 16px 24px;
-
+            margin: 0 auto;
+            padding: 16px 28px;
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
         }
 
         .logo {
-            font-size: 21px;
-            font-weight: 700;
+            font-size: 24px;
+            font-weight: 800;
             letter-spacing: -0.5px;
         }
 
         .nav-links {
             display: flex;
-            gap: 22px;
-
+            gap: 28px;
             font-size: 14px;
-            color: #555;
+            color: #5f6368;
         }
 
         .nav-links a:hover {
@@ -100,450 +78,284 @@
         }
 
         /* =========================
-           HERO
+           Hero
         ========================= */
 
         .hero {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 100px 28px 80px;
             text-align: center;
-
-            padding:
-                110px
-                24px
-                100px;
         }
 
         .badge {
             display: inline-block;
-
-            background: #e8f0fe;
-            color: #0071e3;
-
-            padding: 7px 14px;
-
-            border-radius: 100px;
-
+            padding: 8px 16px;
+            background: #eaf2ff;
+            color: #2b6cb0;
+            border-radius: 999px;
             font-size: 14px;
-            font-weight: 600;
-
+            font-weight: 700;
             margin-bottom: 24px;
         }
 
         h1 {
             margin: 0;
-
-            font-size: clamp(42px, 7vw, 78px);
-
+            font-size: clamp(52px, 8vw, 92px);
             line-height: 1.05;
-
-            letter-spacing: -3px;
+            letter-spacing: -4px;
+            font-weight: 900;
         }
 
-        .hero h1 span {
-            color: #0071e3;
+        h1 span {
+            color: #2f7ed8;
         }
 
-        .hero-text {
-            max-width: 650px;
-
-            margin:
-                28px
-                auto
-                36px;
-
+        .hero-description {
+            max-width: 700px;
+            margin: 28px auto 36px;
             font-size: 21px;
-
-            color: #6e6e73;
+            color: #6b7280;
         }
 
-        .store-button {
-
-            display: inline-flex;
-
-            align-items: center;
-            justify-content: center;
-
-            padding:
-                15px
-                26px;
-
+        .download-button {
+            display: inline-block;
+            padding: 16px 28px;
             background: #000;
-
-            color: #fff;
-
-            border-radius: 12px;
-
-            font-size: 16px;
-            font-weight: 600;
-
-            transition: transform .2s ease;
+            color: white;
+            border-radius: 14px;
+            font-weight: 700;
+            transition: transform 0.2s ease;
         }
 
-        .store-button:hover {
-            transform: scale(1.04);
+        .download-button:hover {
+            transform: translateY(-2px);
         }
 
         /* =========================
-           HERO CARD
+           Calendar Preview
         ========================= */
 
         .preview {
             max-width: 850px;
-
-            margin:
-                0
-                auto
-                100px;
-
-            padding: 24px;
+            margin: 30px auto 100px;
+            padding: 70px 30px;
+            background: linear-gradient(135deg, #24252c, #363841);
+            border-radius: 36px;
         }
 
-        .preview-card {
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #1f1f23,
-                    #3a3a42
-                );
-
-            border-radius: 34px;
-
-            padding:
-                80px
-                30px;
-
-            color: white;
-
-            text-align: center;
-
-            box-shadow:
-                0 30px 80px
-                rgba(0,0,0,.2);
-        }
-
-        .preview-calendar {
-
+        .calendar {
             max-width: 480px;
-
-            margin: auto;
-
+            margin: 0 auto;
             padding: 26px;
-
-            border-radius: 25px;
-
-            background:
-                rgba(255,255,255,.15);
-
-            backdrop-filter: blur(20px);
-
-            border:
-                1px solid
-                rgba(255,255,255,.25);
+            border-radius: 24px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.25);
+            color: white;
         }
 
-        .month {
-
+        .calendar-title {
+            text-align: center;
             font-size: 24px;
-            font-weight: 700;
-
-            margin-bottom: 18px;
+            font-weight: 800;
+            margin-bottom: 22px;
         }
 
         .calendar-grid {
-
             display: grid;
-
-            grid-template-columns:
-                repeat(7, 1fr);
-
-            gap: 8px;
-
-            font-size: 14px;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
         }
 
-        .calendar-grid span {
-
-            padding: 9px 0;
-
+        .day {
+            padding: 10px 0;
+            text-align: center;
             border-radius: 10px;
-
-            background:
-                rgba(255,255,255,.08);
+            background: rgba(255,255,255,0.08);
+            font-size: 14px;
         }
 
         .today {
-
-            background: #ff453a !important;
-
-            font-weight: 700;
+            background: #ff4d45;
+            color: white;
+            font-weight: 800;
         }
 
         /* =========================
-           FEATURES
+           Features
         ========================= */
 
         section {
-            padding:
-                100px
-                24px;
+            padding: 90px 28px;
+        }
+
+        .section-container {
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
         .section-title {
-
-            max-width: 750px;
-
-            margin:
-                0
-                auto
-                60px;
-
             text-align: center;
+            font-size: 42px;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
         }
 
-        .section-title h2 {
-
-            margin: 0 0 18px;
-
-            font-size: 48px;
-
-            letter-spacing: -2px;
-        }
-
-        .section-title p {
-
-            margin: 0;
-
-            font-size: 19px;
-
-            color: #6e6e73;
+        .section-subtitle {
+            text-align: center;
+            color: #6b7280;
+            max-width: 650px;
+            margin: 0 auto 50px;
         }
 
         .features {
-
-            max-width: 1100px;
-
-            margin: auto;
-
             display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 22px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
         }
 
-        .feature {
-
+        .card {
             background: white;
-
             padding: 30px;
-
             border-radius: 24px;
-
-            border:
-                1px solid
-                #e5e5e7;
+            border: 1px solid #e8eaf0;
         }
 
-        .feature-icon {
-
-            font-size: 34px;
-
-            margin-bottom: 18px;
+        .card-icon {
+            font-size: 30px;
+            margin-bottom: 16px;
         }
 
-        .feature h3 {
-
-            margin:
-                0
-                0
-                10px;
-
+        .card h3 {
+            margin: 0 0 10px;
             font-size: 20px;
         }
 
-        .feature p {
-
+        .card p {
             margin: 0;
-
-            color: #6e6e73;
-
-            font-size: 15px;
+            color: #6b7280;
         }
 
         /* =========================
-           QUICK LAUNCH
+           Pricing
         ========================= */
 
-        .quicklaunch {
-
-            background: #000;
-
-            color: white;
-
-            text-align: center;
+        .pricing-section {
+            background: #eef1f7;
         }
 
-        .quicklaunch-inner {
-
+        .pricing-box {
             max-width: 800px;
-
-            margin: auto;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
         }
 
-        .quicklaunch h2 {
-
-            font-size: 52px;
-
-            margin:
-                0
-                0
-                24px;
-
-            letter-spacing: -2px;
-        }
-
-        .quicklaunch p {
-
-            font-size: 20px;
-
-            color: #a1a1a6;
-
-            margin-bottom: 25px;
-        }
-
-        .quote {
-
-            font-size: 24px;
-
-            font-weight: 600;
-
-            color: white;
-
-            margin-top: 40px;
-        }
-
-        /* =========================
-           PRICING
-        ========================= */
-
-        .pricing {
-
-            max-width: 700px;
-
-            margin: auto;
-
+        .pricing-card {
             background: white;
-
-            border-radius: 28px;
-
-            padding: 50px;
-
-            text-align: center;
-
-            border:
-                1px solid
-                #e5e5e7;
+            border-radius: 24px;
+            padding: 32px;
+            border: 1px solid #e5e7eb;
         }
 
-        .pricing h3 {
+        .pricing-card.pro {
+            border: 2px solid #2f7ed8;
+        }
 
-            margin: 0;
-
-            font-size: 32px;
+        .pricing-card h3 {
+            margin-top: 0;
+            font-size: 24px;
         }
 
         .price {
-
-            font-size: 48px;
-
-            font-weight: 700;
-
-            margin:
-                18px
-                0;
-        }
-
-        .pricing p {
-
-            color: #6e6e73;
-
-            margin-bottom: 25px;
-        }
-
-        /* =========================
-           ABOUT
-        ========================= */
-
-        .about {
-
-            max-width: 750px;
-
-            margin: auto;
-
-            text-align: center;
-        }
-
-        .about h2 {
-
-            font-size: 42px;
-
+            font-size: 34px;
+            font-weight: 800;
             margin-bottom: 20px;
         }
 
-        .about p {
-
-            color: #6e6e73;
-
-            font-size: 18px;
+        .pricing-card ul {
+            padding-left: 20px;
+            color: #5f6368;
         }
 
         /* =========================
-           FOOTER
+           About Developer
+        ========================= */
+
+        .developer-box {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 28px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .developer-box h3 {
+            margin-top: 0;
+            font-size: 26px;
+        }
+
+        .developer-info {
+            margin-top: 24px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .developer-info strong {
+            color: #202124;
+        }
+
+        /* =========================
+           Support
+        ========================= */
+
+        .support-section {
+            background: #eef1f7;
+        }
+
+        .support-box {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 28px;
+            text-align: center;
+            border: 1px solid #e5e7eb;
+        }
+
+        .support-email {
+            display: inline-block;
+            margin-top: 18px;
+            color: #2f7ed8;
+            font-weight: 700;
+        }
+
+        /* =========================
+           Footer
         ========================= */
 
         footer {
-
-            background: #111;
-
-            color: #a1a1a6;
-
-            padding:
-                55px
-                24px;
-        }
-
-        .footer-inner {
-
-            max-width: 1100px;
-
-            margin: auto;
-
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            gap: 30px;
-        }
-
-        .footer-links {
-
-            display: flex;
-
-            gap: 22px;
-
+            padding: 50px 28px;
+            text-align: center;
+            color: #6b7280;
             font-size: 14px;
         }
 
-        .footer-links a:hover {
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 20px;
+        }
 
-            color: white;
+        .footer-links a:hover {
+            color: #000;
         }
 
         /* =========================
-           MOBILE
+           Mobile
         ========================= */
 
         @media (max-width: 800px) {
@@ -552,56 +364,48 @@
                 display: none;
             }
 
-            .hero {
-                padding-top: 80px;
+            h1 {
+                letter-spacing: -2px;
             }
 
             .features {
                 grid-template-columns: 1fr;
             }
 
-            .section-title h2 {
-                font-size: 38px;
+            .pricing-box {
+                grid-template-columns: 1fr;
             }
 
-            .quicklaunch h2 {
-                font-size: 40px;
+            .preview {
+                margin-left: 18px;
+                margin-right: 18px;
+                padding: 40px 18px;
             }
 
-            .footer-inner {
-                flex-direction: column;
-                text-align: center;
+            section {
+                padding: 70px 20px;
             }
-
         }
-
     </style>
 </head>
 
-
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
-
 <header>
+    <nav class="nav">
 
-    <div class="nav">
-
-        <div class="logo">
+        <a href="#" class="logo">
             📅 LookCalendar
-        </div>
+        </a>
 
         <div class="nav-links">
             <a href="#features">Features</a>
             <a href="#quicklaunch">Quick Launch</a>
             <a href="#pricing">Pricing</a>
-            <a href="#about">About</a>
+            <a href="#developer">Developer</a>
         </div>
 
-    </div>
-
+    </nav>
 </header>
 
 
@@ -609,83 +413,81 @@
      HERO
 ========================= -->
 
+<main>
+
 <section class="hero">
 
     <div class="badge">
-        Full Monthly Calendar for iPhone
+        Full Monthly Calendar for iPhone Lock Screen
     </div>
 
     <h1>
-        See your <span>entire month</span><br>
-        at a glance.
+        See the <span>whole month.</span><br>
+        At a glance.
     </h1>
 
-    <p class="hero-text">
-        LookCalendar puts your full monthly calendar directly on your
+    <p class="hero-description">
+        LookCalendar lets you see the entire month directly on your
         iPhone Lock Screen and Apple Watch.
     </p>
 
     <a
-        class="store-button"
+        class="download-button"
         href="https://apps.apple.com/us/app/lookcalendar/id6792032535"
-        target="_blank">
-
+        target="_blank"
+        rel="noopener"
+    >
         Download on the App Store
-
     </a>
 
 </section>
 
 
 <!-- =========================
-     PREVIEW
+     CALENDAR PREVIEW
 ========================= -->
 
 <div class="preview">
 
-    <div class="preview-card">
+    <div class="calendar">
 
-        <div class="preview-calendar">
+        <div class="calendar-title">
+            LookCalendar
+        </div>
 
-            <div class="month">
-                LookCalendar
-            </div>
+        <div class="calendar-grid">
 
-            <div class="calendar-grid">
+            <div class="day">1</div>
+            <div class="day">2</div>
+            <div class="day">3</div>
+            <div class="day">4</div>
+            <div class="day">5</div>
+            <div class="day">6</div>
+            <div class="day">7</div>
 
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>4</span>
-                <span>5</span>
-                <span>6</span>
-                <span>7</span>
+            <div class="day">8</div>
+            <div class="day">9</div>
+            <div class="day">10</div>
+            <div class="day">11</div>
+            <div class="day">12</div>
+            <div class="day">13</div>
+            <div class="day">14</div>
 
-                <span>8</span>
-                <span>9</span>
-                <span>10</span>
-                <span>11</span>
-                <span>12</span>
-                <span>13</span>
-                <span>14</span>
+            <div class="day">15</div>
+            <div class="day">16</div>
+            <div class="day today">17</div>
+            <div class="day">18</div>
+            <div class="day">19</div>
+            <div class="day">20</div>
+            <div class="day">21</div>
 
-                <span>15</span>
-                <span>16</span>
-                <span class="today">17</span>
-                <span>18</span>
-                <span>19</span>
-                <span>20</span>
-                <span>21</span>
-
-                <span>22</span>
-                <span>23</span>
-                <span>24</span>
-                <span>25</span>
-                <span>26</span>
-                <span>27</span>
-                <span>28</span>
-
-            </div>
+            <div class="day">22</div>
+            <div class="day">23</div>
+            <div class="day">24</div>
+            <div class="day">25</div>
+            <div class="day">26</div>
+            <div class="day">27</div>
+            <div class="day">28</div>
 
         </div>
 
@@ -700,128 +502,60 @@
 
 <section id="features">
 
-    <div class="section-title">
+    <div class="section-container">
 
-        <h2>
-            Your month. Right where you need it.
+        <h2 class="section-title">
+            Your month, always visible
         </h2>
 
-        <p>
-            Check your month without opening a calendar app.
+        <p class="section-subtitle">
+            Check your schedule without opening your calendar app.
         </p>
 
-    </div>
+        <div class="features">
 
+            <div class="card">
 
-    <div class="features">
+                <div class="card-icon">📅</div>
 
+                <h3>Full Monthly Calendar</h3>
 
-        <div class="feature">
+                <p>
+                    See the entire current month directly on your
+                    iPhone Lock Screen.
+                </p>
 
-            <div class="feature-icon">
-                📅
             </div>
 
-            <h3>
-                Full Monthly Calendar
-            </h3>
 
-            <p>
-                See the entire current month at a glance directly from
-                your iPhone Lock Screen.
-            </p>
+            <div class="card">
 
-        </div>
+                <div class="card-icon">🔴</div>
 
+                <h3>Today at a Glance</h3>
 
-        <div class="feature">
+                <p>
+                    Today is clearly highlighted so you can quickly
+                    understand where you are in the month.
+                </p>
 
-            <div class="feature-icon">
-                🔴
             </div>
 
-            <h3>
-                Today & Events
-            </h3>
 
-            <p>
-                Easily see today and identify days that contain
-                calendar events.
-            </p>
+            <div class="card">
 
-        </div>
+                <div class="card-icon">⌚</div>
 
+                <h3>Apple Watch Support</h3>
 
-        <div class="feature">
+                <p>
+                    Keep a monthly calendar available on your
+                    Apple Watch as well.
+                </p>
 
-            <div class="feature-icon">
-                ⌚
             </div>
 
-            <h3>
-                Apple Watch
-            </h3>
-
-            <p>
-                Keep your monthly calendar available on your
-                Apple Watch as well.
-            </p>
-
         </div>
-
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                🎨
-            </div>
-
-            <h3>
-                Multiple Styles
-            </h3>
-
-            <p>
-                Choose the widget style that works best for your
-                Lock Screen.
-            </p>
-
-        </div>
-
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                🆓
-            </div>
-
-            <h3>
-                Core Features Are Free
-            </h3>
-
-            <p>
-                All core calendar and widget features are available
-                for free.
-            </p>
-
-        </div>
-
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                🔒
-            </div>
-
-            <h3>
-                No Subscription
-            </h3>
-
-            <p>
-                No recurring payments. Use the core features for free.
-            </p>
-
-        </div>
-
 
     </div>
 
@@ -832,31 +566,39 @@
      QUICK LAUNCH
 ========================= -->
 
-<section
-    id="quicklaunch"
-    class="quicklaunch">
+<section id="quicklaunch" class="pricing-section">
 
-    <div class="quicklaunch-inner">
+    <div class="section-container">
 
-        <h2>
-            Use the calendar you already love.
+        <h2 class="section-title">
+            Use the calendar app you already love
         </h2>
 
-        <p>
-            LookCalendar isn't trying to replace your favorite
-            calendar app.
+        <p class="section-subtitle">
+            LookCalendar is designed to complement your favorite calendar app,
+            not replace it.
         </p>
 
-        <p>
-            Choose your preferred calendar app and use Quick Launch
-            to open it whenever you need to manage your schedule
-            in more detail.
-        </p>
+        <div class="developer-box">
 
-        <div class="quote">
+            <h3>🚀 Quick Launch</h3>
 
-            LookCalendar lets you see the month.<br>
-            Your favorite calendar app handles the rest.
+            <p>
+                Everyone has their own preferred calendar app.
+                Some people use Apple Calendar, Google Calendar,
+                NAVER Calendar, or other calendar apps.
+            </p>
+
+            <p>
+                With Quick Launch, you can choose a supported calendar app
+                and quickly open it when you need to view or manage
+                your schedule in more detail.
+            </p>
+
+            <p>
+                We are actively collecting feedback about additional
+                calendar apps users would like us to support.
+            </p>
 
         </div>
 
@@ -871,51 +613,57 @@
 
 <section id="pricing">
 
-    <div class="section-title">
+    <div class="section-container">
 
-        <h2>
-            Simple pricing.
+        <h2 class="section-title">
+            Simple pricing
         </h2>
 
-        <p>
-            No subscription. No recurring payments.
+        <p class="section-subtitle">
+            No subscription. The core calendar experience is free.
         </p>
 
-    </div>
+        <div class="pricing-box">
+
+            <div class="pricing-card">
+
+                <h3>Free</h3>
+
+                <div class="price">
+                    $0
+                </div>
+
+                <ul>
+                    <li>Full monthly Lock Screen calendar</li>
+                    <li>Monthly Apple Watch calendar</li>
+                    <li>Multiple calendar styles</li>
+                    <li>Today highlighting</li>
+                    <li>Calendar event indicators</li>
+                </ul>
+
+            </div>
 
 
-    <div class="pricing">
+            <div class="pricing-card pro">
 
-        <h3>
-            LookCalendar
-        </h3>
+                <h3>LookCalendar Pro</h3>
 
-        <div class="price">
-            Free
+                <div class="price">
+                    $2.99
+                </div>
+
+                <p><strong>One-time purchase.</strong></p>
+
+                <ul>
+                    <li>Quick Launch</li>
+                    <li>Open your preferred supported calendar app</li>
+                    <li>No subscription</li>
+                    <li>No recurring payments</li>
+                </ul>
+
+            </div>
+
         </div>
-
-        <p>
-            All core calendar and widget features are completely free.
-        </p>
-
-        <hr style="
-            border: none;
-            border-top: 1px solid #e5e5e7;
-            margin: 30px 0;
-        ">
-
-        <h3>
-            Quick Launch Pro
-        </h3>
-
-        <div class="price">
-            $2.99
-        </div>
-
-        <p>
-            One-time purchase.<br>
-            No subscription.
-        </p>
 
     </div>
 
@@ -923,48 +671,97 @@
 
 
 <!-- =========================
-     ABOUT
+     DEVELOPER
 ========================= -->
 
-<section id="about">
+<section id="developer">
 
-    <div class="about">
+    <div class="section-container">
 
-        <h2>
-            About LookCalendar
+        <h2 class="section-title">
+            About the Developer
         </h2>
 
-        <p>
-            LookCalendar was created by
-            <strong>Eunkyu Choi</strong>,
-            an independent iOS developer.
+        <p class="section-subtitle">
+            LookCalendar is independently developed and maintained.
         </p>
 
-        <p>
-            The app was built from a simple idea:
-            being able to see the entire month without opening
-            a calendar app.
-        </p>
+        <div class="developer-box">
 
-        <p>
-            Feedback is always welcome. If there is a calendar app
-            you would like LookCalendar to support, please get in touch.
-        </p>
+            <h3>Eunkyu Choi</h3>
 
-        <p>
-            <strong>
-                Contact:
-            </strong>
+            <p>
+                LookCalendar is an independent iOS application
+                developed and maintained by Eunkyu Choi.
+            </p>
 
-            <a href="mailto:lookcalendar.help@gmail.com"
-               style="color:#0071e3;">
-                lookcalendar.help@gmail.com
-            </a>
-        </p>
+            <p>
+                The app was created to solve a simple everyday problem:
+                checking the entire month without needing to open
+                a full calendar application.
+            </p>
+
+            <div class="developer-info">
+
+                <div>
+                    <strong>Developer:</strong> Eunkyu Choi
+                </div>
+
+                <div>
+                    <strong>Project:</strong> LookCalendar
+                </div>
+
+                <div>
+                    <strong>Contact:</strong>
+                    <a href="mailto:lookcalendar.help@gmail.com">
+                        lookcalendar.help@gmail.com
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
 </section>
+
+
+<!-- =========================
+     SUPPORT
+========================= -->
+
+<section class="support-section">
+
+    <div class="section-container">
+
+        <div class="support-box">
+
+            <h2>Support & Feedback</h2>
+
+            <p>
+                Have a question, found a bug, or want another
+                calendar app supported?
+            </p>
+
+            <p>
+                Please contact us anytime.
+            </p>
+
+            <a
+                class="support-email"
+                href="mailto:lookcalendar.help@gmail.com"
+            >
+                ✉️ lookcalendar.help@gmail.com
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
 
 
 <!-- =========================
@@ -973,36 +770,31 @@
 
 <footer>
 
-    <div class="footer-inner">
+    <div class="footer-links">
 
-        <div>
-            © 2026 LookCalendar · Developed by Eunkyu Choi
-        </div>
+        <a href="privacy.html">
+            Privacy Policy
+        </a>
 
+        <a href="terms.html">
+            Terms of Service
+        </a>
 
-        <div class="footer-links">
-
-            <a href="privacy.html">
-                Privacy Policy
-            </a>
-
-            <a href="terms.html">
-                Terms of Service
-            </a>
-
-            <a
-                href="mailto:lookcalendar.help@gmail.com">
-
-                Contact
-
-            </a>
-
-        </div>
+        <a
+            href="https://apps.apple.com/us/app/lookcalendar/id6792032535"
+            target="_blank"
+            rel="noopener"
+        >
+            App Store
+        </a>
 
     </div>
 
-</footer>
+    <div>
+        © 2026 Eunkyu Choi · LookCalendar
+    </div>
 
+</footer>
 
 </body>
 </html>
