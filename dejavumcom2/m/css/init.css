@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+/* Reset */
+html{position: relative;width: 100%;}
+body{background:#FFFFFF;overflow-x:hidden;-webkit-user-select:none;-webkit-text-size-adjust:none;font-size:16px;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,select,textarea,p,blockquote,th,td,legend,button{margin:0;padding:0;color:#333;font-family:'Malgun Gothic','Droid Sans','Apple-Gothic','애플고딕','Tahoma',dotum,'돋움',gulim,'굴림',sans-serif;line-height: 1.25em;-webkit-text-size-adjust:none;}/*사파리 회전시 폰트 크기 고정하기*/
+form,fieldset,img{border:0}
+
+table{border-spacing:0;border-collapse:collapse}
+hr,legend,caption{display:none}
+img,fieldset,button{border:0 none}
+ul,ol,li{list-style:none outside}
+img,input,select,textarea{vertical-align:middle}
+textarea{-webkit-border-radius:0;-webkit-appearance:none}
+select{padding:0 0 0 6px;letter-spacing:0;-webkit-border-radius:0;-webkit-appearance:none}
+a{text-decoration:none;color:#3b3b3b}
+a:link,a:visited,a:hover,a:active{text-decoration:none}
+li,p,dt,dd,div,span{word-break:break-all}
+.hp{visibility:hidden;width:0;height:0;overflow:hidden;position:absolute;top:-10000px;font-size:0;line-height:0}
+input[type="text"] , input[type="number"] {border:1px solid #aaa;color:#656565;font-size:0.81em;border-radius:0;-webkit-border-radius:0;-webkit-appearance:none;box-shadow:none}
+input[type="password"]{border:1px solid #aaa;color:#656565;font-size:0.81em;border-radius:0;-webkit-border-radius:0;-webkit-appearance:none;box-shadow:none}
+input[type="tel"]{border:1px solid #aaa;color:#656565;font-size:0.81em;border-radius:0;-webkit-border-radius:0;-webkit-appearance:none;box-shadow:none}
+
+/* Common */
+#wrapper{position: relative;width: 100%;/*max-width: 720px;*/margin:0 auto;text-align: center}
+#wrapper img{width: 100%}
+.blind{visibility:hidden;overflow:hidden;position:absolute;top:0;left:0;width:0;height:0;font-size:0;line-height:0}
+.txt-table{display: table;position: relative;width: 100%;height: 100%;}
+.txt-table-cell{display: table-cell;vertical-align: middle;position: relative;}
+.txt-wrap{position: absolute;top:0;left:0;width: 100%;height: 100%;display: block;}

@@ -1,0 +1,404 @@
+@charset "utf-8";
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+@import url('http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css');
+
+/* reset */
+a, abbr, address, article, aside, audio, b, big, blockquote, body, canvas, caption, cite, code, dd, del, details, dfn, dialog, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, meter, nav, object, ol, output, p, pre, progress, q, rp, rt, ruby, s, samp, section, small, span, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video, xmp {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+h1, h2, h3, h4, h5, h6, strong {
+	font-weight: bold;
+}
+em, address {
+	font-weight: normal;
+	font-style: normal;
+}
+img {
+	max-width: 100%;
+	height: auto;
+}
+iframe {
+	max-width: 100%;
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+ul, ol, li {
+	list-style: none;
+}
+textarea {
+	overflow: auto;
+}
+button {
+	cursor: pointer;
+}
+
+/* base */
+body {
+	font-size: 20px;
+	line-height: 1.5;
+	color: #111;
+	font-family:  '나눔고딕', 'NanumGothic', 'Nanum Gothic', '돋움', 'Dotum', sans-serif;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+strong, b, dt,
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 700;
+}
+input, textarea, select, option, button {
+	font-size: 100%;
+	font-family: inherit;
+}
+
+.clear:after,
+.row:after {
+	clear: both;
+	content: '';
+	display: block;
+}
+.only-sr {
+	overflow: hidden;
+	position: absolute;
+	top: -999999px;
+	width: 0;
+	height: 0;
+	font-size: 0;
+	line-height: 0;
+	visibility: hidden;
+}
+
+/* grid system */
+.row {
+}
+.row > * {
+	position: relative;
+	float: left;
+}
+.col2-1 {
+	width: 50%;
+}
+
+/* layout */
+body {
+	max-width: 720px;
+	margin: 0 auto;
+	background: #f9f7f7 ;
+}
+
+/* layout | header */
+.site-header {
+	position:relative;
+	padding-bottom: 5%;
+
+}
+
+.site-logo {
+
+	
+}
+.site-logo img {
+	width: 100%;
+}
+.site-logo .name {
+	position: absolute;
+	right: 62.5%;
+	top: 15.5%; /*14.5% */
+	-webkit-transform: translateY(0); /* 강제 적용 */
+	font-size: 1.75em; /* 35px */
+	color:#ae2159; 
+/* color:#000000; */
+}
+.site-logo .parents {
+	position: absolute;
+	left: 22%;
+	right: 18%;
+	top: 20%;
+	display: block;
+	font-size: 1.0em; /* 28px */
+	letter-spacing: -1px;
+}
+.site-logo .parent {
+	display: inline-block;
+	width: 48%;
+	color:#e83775; 
+/* 	color:#000000; */
+}
+
+.main-photo {
+	position:absolute;
+	top: 26%;
+	font-size: 0;
+	left: 15.3%;
+	right: 14.1%;
+
+}
+.main-photo img {
+	width: 100%;
+}
+
+.event-info {
+	position: relative;
+	margin: 0 0 12%;
+}
+.event-info img {
+	width: 100%;
+}
+.event-info dl {
+	position: absolute;
+	top: 61%;
+	left: 12%;
+	right: 14%;
+}
+.event-info dt {
+	float: left;
+	clear: left;
+	width: 17%;
+	margin-right: 1.5%;
+	line-height: 1;
+}
+.event-info dd {
+	margin-bottom: 1.8%;
+	margin-left: 19%;
+	font-size: .9em ; /* 28px */
+	letter-spacing: -1px;
+	font-weight: 700;
+	line-height: 1;
+	color:#eb4e87;
+}
+.event-info .address {
+	font-size: .9em; /* 20px */
+	line-height: 1.2;
+}
+
+/* layout | main */
+.site-main {
+	padding: 30px 30px 0;	
+}
+
+.box {
+	position: relative;
+	line-height: 0;
+}
+.box .deco {
+	position: absolute;
+	right: -2.5%;
+	bottom: 1%;
+	width: 20%;
+}
+.box .dday {
+	position: absolute;
+	top: 57%;
+	left: 0;
+	right: 0;
+	text-align: center;
+	font-size: 1.75em; /* 35px */
+	line-height: 1;
+	letter-spacing: -1px;
+}
+
+
+.album {
+	position: relative;
+}
+.album img {
+	display: block;
+}
+.album .photo1,
+.album .photo2,
+.album .photo3,
+.dday-wrap,
+.more {
+	position: absolute;
+}
+.album .photo1 {
+	top: 5%;
+	left: 9.1%;
+	right: 25.2%;
+}
+.album .photo2 {
+	top: 34%;
+	left: 37%;
+	right: 5.8%;
+
+}
+.album .photo3 {
+	top: 60.5%;
+	left: 4.2%;
+	right: 51.7%;
+}
+.dday-wrap {
+	top: 46%;
+	left: 0%;
+	right: 68%;
+}
+.dday {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	color: #e83775;
+	font-size: 2em; /* 25px */
+	text-align: center;
+	letter-spacing: -1px;
+	text-indent: 5%;
+	font-weight:bold;
+}
+.more{
+	top: 72%;
+	left: 56%;
+	right: 8%;
+}
+
+
+.cover {
+	margin-top: 50px;
+	margin-right: -2.33%;
+	line-height: 0;
+}
+
+.card-text {
+	position: relative;
+	line-height: 0;
+}
+.card-title {
+	padding: 0;
+}
+.card-text .textarea {
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	position: absolute;
+	font-size: 1.1em;
+	letter-spacing: -1px;
+	line-height: 1.5;
+	color: white;
+	font-family: 'Nanum Myeongjo', '나눔고딕', 'NanumGothic', 'Nanum Gothic', '돋움', 'Dotum', sans-serif;
+	height:35%;
+	top: 39%;
+	left: 18%;
+	right: 14%;
+}
+.card-text .textarea .from {
+	float: right;
+	margin-top: 10%;
+	font-size: 0.933em /* 28px */
+}
+.event-info2 {
+	position: absolute;
+	left: 10%;
+	letter-spacing: -1px;
+	font-weight: 700;
+	line-height: 1.5;
+	top: 79%;
+	color: white;
+	right: 10%;
+	text-align:center;
+
+}
+.event-info2 .date {
+	font-size: 1.0em; /* 30px */
+	font-style: oblique;
+}
+.event-info2 .address {
+	margin-left: 2%;
+	font-size: 0.9em /* 24px */
+}
+
+.bg-card {
+	width: 100%;
+	margin-top: -10%;
+}
+
+
+/* layout | footer */
+#footer{
+	padding:0 30px;
+}
+.site-footer a {
+	display: block;
+}
+.site-footer img {
+	width: 100%;
+}
+.location {
+	padding:0 30px 0;
+}
+.location-title {
+	border: 6px solid #000;
+	line-height: 0;
+}
+.map {
+	margin: 0 -30px;
+	line-height: 0;
+}
+.site-footer .wrapper {
+	padding: 10px;
+	background: #414141;
+	font-size: 0;
+	
+}
+.link-call {
+	margin: 6px -5px;
+}
+.link-call a {
+	margin: 2px 5px;
+}
+.link-sns {
+	margin: 6px -5px;
+}
+.link-sns p {
+	width: 20%;
+}
+.link-sns a {
+	margin: 0 5px;
+}
+
+
+/* IE7 */
+.ie7 .clear,
+.ie7 .row {
+	zoom: 1;
+}
+.ie7 input, .ie7 textarea, .ie7 select, .ie7 option, .ie7 button {
+	font-family:  '나눔고딕', 'NanumGothic', 'Nanum Gothic', '돋움', 'Dotum', sans-serif;
+}
+.ie7 a {
+	color: #444;
+}
+.ie7 a[href] {
+	cursor: pointer;
+}
+.ie7 .col2-1 {
+	width: 49.9%;
+}
+.ie7 .main-photo {
+	zoom: 1;
+}
+.ie7 .landscape1 {
+	width: 71.9%;
+}
+.ie7 .landscape1-side {
+	width: 23.9%;
+}
+.ie7 .portrait1-side {
+	width: 47.8%;
+}
+.ie7 .album .row .box {
+	font-size: 0;
+}
+.ie7 .link-sns p {
+	width: 19.9%;
+}

@@ -1,0 +1,37 @@
+/* HTML Elements Default Properties
+-----------------------------------------------------------------------------------*/
+* { margin: 0; padding: 0; }
+body { font: 75%/1.5em Dotum,Verdana,sans-serif; color:#666; background-color: #fff; }
+ul,ol { list-style: none; }
+hr { display: none; }
+h1 { font-size: 1.2em; line-height: 1.5em; color: #000; }
+h2,h3,h4,h5 { font-size: 1em; vertical-align: middle; }
+a:link, a:visited, a:active { color: #666;text-decoration: none; }
+a:hover { color: #666;text-decoration: underline; }
+form *, input, select, textarea { font-size: 1em; vertical-align: middle; }
+form { margin: 0; padding: 0; }
+fieldset { margin: 0; padding: 0; border: none 0 transparent; }
+legend { display: none; }
+img { vertical-align: middle; border:0;}
+em { font-style: normal; }
+table {border-collapse:collapse;}
+td { word-break:break-all;}
+
+/* Global Class
+-----------------------------------------------------------------------------------*/
+.clfix { zoom:1; }
+.clfix:after { content:""; display:block; clear:both; }
+.hideLabel { position: absolute; left: -5000px; width: 0; }
+
+.ellipsis {overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+
+.madang_thumbnail {overflow: hidden; width:196px; height:182px;}
+.madang_thumbnail img { vertical-align:top; width:192px; min-height:178px; height: expression(this.height < 178 ? 178: true); }
+
+.book_thumbnail {overflow: hidden; height:269px;}
+.book_thumbnail img { vertical-align:top; min-height:267px; height: __EXPRESSION__(this.height < ? : true); }
+ 
+.shop_thumbnail {overflow: hidden; height:273px;}
+.shop_thumbnail img { vertical-align:top; min-height:270px; height: __EXPRESSION__(this.height < ? : true); }
+
+.ui-datepicker { z-index:99;}

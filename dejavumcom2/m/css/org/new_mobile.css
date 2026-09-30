@@ -1,0 +1,336 @@
+@charset "utf-8";
+@import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
+
+/*
+@font-face{
+  font-family:NanumGothic;
+  font-style: normal;
+  font-weight: normal;
+  src: url(/img/NanumGothic.eot);
+  src: local(※), url(/img/NanumGothic.woff) format('woff'), url('/img/NanumGothic.ttf') format('truetype');
+}
+*/
+body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,nav,menu,section,article,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button{font-size:0.75em;margin:0;padding:0;-webkit-text-size-adjust:none;}
+body,input,textarea,select,table,button{font-family:'Nanum Gothic', 나눔고딕, dotum, 돋움, tahoma}
+textarea,input,select {vertical-align:middle;}
+img,fieldset{border:0;vertical-align:top;}
+ul,ol,li{list-style:none;}
+em,address{font-style:normal;}
+table{border-collapse:collapse;border-spacing:0;}
+legend, caption {display:none;}
+.blind{display:block;position:absolute;left:-9999em;top:-9999em}
+
+/****** SKIN 1 ******/
+#skin1{width:100%;height:100%;margin:0 auto;zoom:1;background:#212121}
+#skin1:after{content:"";display:block;font-size:0;height:0;line-height:0;clear:both}
+/*** 메인비주얼 ***/
+#skin1 .visual{height:100%;position:relative;zoom:1}
+#skin1 .visual:after{content:"";display:block;font-size:0;height:0;line-height:0;clear:both}
+/* 상단타이틀 */
+#skin1 .visual h1{width:100%;text-align:center;font-size:1.5em;color:#fff;letter-spacing:-0.05em;position:relative;z-index:2;/*background:green;opacity:0.4;filter:alpha(opacity=40)*/}
+#skin1 .visual h1 .conbox{width:100%;position:absolute;bottom:12%;left:0;zoom:1}
+#skin1 .visual h1 .conbox:after{content:"";display:block;font-size:0;height:0;line-height:0;clear:both}
+#skin1 .visual h1 .conbox span{display:block;width:100%;text-align:center;position:absolute;padding-top:1%;*margin-left:-165px;z-index:3}
+#skin1 .visual h1 .conbox span em{font-style:normal;font-size:1.2em}
+#skin1 .visual h1 .conbox img{position:absolute;top:0;left:0;z-index:1}
+/* 아기사진 */
+#skin1 .visual .con_img{overflow:hidden;position:relative;z-index:1}
+/* 행사정보 140717 수정 */
+#skin1 .visual .txtbox{clear:both;display:block;width:100%;padding:3% 0;background:#000;position:relative}
+#skin1 .visual .txtbox:after{content:"";display:block;font-size:0;height:0;line-height:0;clear:both}
+#skin1 .visual .txtbox li{float:left;width:50%;font-size:2em;font-weight:bold;color:#fff;letter-spacing:-0.05em}
+#skin1 .visual .txtbox .fm {width:45%;padding-left:5%;line-height:140%;vertical-align:top}
+#skin1 .visual .txtbox .fm span{display:block;vertical-align:top}
+#skin1 .visual .txtbox .baby{font-size:1.3em;line-height:190%;text-align:center}
+#skin1 .visual .txtbox .baby em{font-size:2.2em}
+#skin1 .dday{clear:both;width:100%;height:30%;font-size:2.8em;line-height:1em;padding:3% 0;vertical-align:center;letter-spacing:-0.05em;font-family:'Nanum Gothic';text-align:center;color:#fff;background:#f30457;position:relative;z-index:1;}
+#skin1 .visual .dateinfo{padding:5% 3.5% 5% 0;text-align:right;position:relative;z-index:1;color:#fff;background:#212121}
+#skin1 .visual .dateinfo span{display:block;font-size:2.78em;letter-spacing:-0.093em;margin-bottom:0.2em}
+#skin1 .visual .dateinfo em{display:block;font-size:1.7em;margin:0.05em 0 0 0;letter-spacing:-0.063em}
+/***  갤러리 ***/
+#skin1 .gallery{width:100%;height:100%;position:relative}
+#skin1 .gallery .bg{position:relative;z-index:4}
+#skin1 .gallery .photo1{display:block;width:43%;height:25em;text-align:center;overflow:hidden;position:absolute;left:13%;top:0;padding-top:12%;z-index:3;background:#5b2825}
+#skin1 .gallery .photo2{display:block;width:26%;height:25em;text-align:center;overflow:hidden;position:absolute;right:14%;top:0;padding-top:60.8%;z-index:2;background:#325b25}
+#skin1 .gallery .photo3{display:block;width:31%;height:15em;text-align:center;overflow:hidden;position:absolute;left:13.5%;top:0;padding-top:123.5%;z-index:1;background:#b67a49}
+#skin1 .gallery .btn{width:100%;height:3.8em;position:absolute;left:0;bottom:0;z-index:5}
+/***  모시는글 ***/
+#skin1 .write{width:100%;height:100%}
+#skin1 .write .writebox{display:block;width:100%;overflow:hidden;text-align:center;position:relative}
+#skin1 .write .writebox table{width:100%;margin:0 auto;position:absolute;left:center;top:0;z-index:2;}
+#skin1 .write .writebox table td{width:100%;height:16.65em;font-size:1.5em;line-height:1.438em;text-align:center;color:#000;padding:0;margin:0}
+#skin1 .write .dateinfo {width:100%;text-align:center;color:#000;position:relative;/*left:0;bottom:15em;z-index:2*/}
+#skin1 .write .dateinfo span{display:block;width:100%;text-align:center;position:absolute;left:0;top:0;z-index:1}
+#skin1 .write .dateinfo span span{display:block;text-align:center;font-size:1.5em;position:relative}
+#skin1 .write .dateinfo span em{display:block;font-size:1.2em;margin-top:1.5%;}
+#skin1 .write .bg{position:relative;z-index:0}
+/***  찾아오시는길 ***/
+#skin1 .map{height:100%;position:relative;background:#fff;zoom:1}
+#skin1 .map:after{content:"";display:block;font-size:0;height:0;line-height:0;clear:both}
+#skin1 .map .map_area{width:100%;text-align:center}
+#skin1 .map .map_area img{margin:2% 0}
+#skin1 .map ul li img{width:50%;margin:0 !important}
+
+/****** SKIN 2 ******/
+#skin2{width:100%;height:100%;margin:0 auto;zoom:1;background:#fff}
+#skin2:after{content:"";display:block;font-size:0;height:0;line-height:0;clear:both}
+/*** 메인비주얼 ***/
+#skin2 .visual{height:100%;position:relative;zoom:1}
+#skin2 .visual:after{content:"";display:block;font-size:0;height:0;line-height:0;clear:both}
+#skin2 .visual h1{width:100%;position:absolute;z-index:1}
+#skin2 .visual .txtbox{width:90%;position:absolute;left:5%;bottom:3%;/*margin:48% 0 0 5%;*/z-index:2}
+#skin2 .visual .txtbox.co_fff h2,#skin2 .visual .txtbox.co_fff dt,#skin2 .visual .txtbox.co_fff dd{color:#fff}
+#skin2 .visual .txtbox h2{font-size:2em;color:#000;margin:0 0 5% 0;text-shadow: -1px -1px 0 #fff,1px -1px 0 #fff,-1px 1px 0 #fff,1px 1px 0 #fff}
+#skin2 .visual .txtbox h2 span{display:inline-block}
+#skin2 .visual .txtbox h2 .txt1{font-size:1.3em;color:#00a0b4 !important}
+#skin2 .visual .txtbox h2 .txt2{font-size:1.3em;color:#00abff !important}
+#skin2 .visual .txtbox dl {color:#000;margin-bottom:5%}
+#skin2 .visual .txtbox dl dt{font-size:1.2em;margin:5% 0 1% 0;text-shadow: -1px -1px 0  #fff, 1px -1px 0  #fff, -1px 1px 0  #fff, 1px 1px 0  #fff}
+#skin2 .visual .txtbox dl dd{font-size:1.8em;text-shadow: -1px -1px 0  #fff, 1px -1px 0  #fff, -1px 1px 0  #fff, 1px 1px 0  #fff}
+#skin2 .visual h4{width:100%;margin:2% 2% 0 0;text-align:right;font-size:1.8em;color:#000;position:absolute;right:0;top:0;z-index:2;text-shadow: -1px -1px 0  #fff, 1px -1px 0  #fff, -1px 1px 0  #fff, 1px 1px 0  #fff}
+#skin2 .visual h4.co_fff{color:#000}
+#skin2 .visual .bg{position:relative;z-index:0}
+#skin2 .visual .item{position:absolute;left:5%;bottom:3%;z-index:1}
+/***  갤러리 ***/
+#skin2 .gallery{width:100%;height:100%;position:relative;background:#fff;overflow:hidden}
+#skin2 .gallery .photo1{display:block;width:51%;height:28em;text-align:center;overflow:hidden;position:absolute;left:4.8%;top:0;padding-top:4.8%;z-index:1;background:#fff}
+#skin2 .gallery .photo2{display:block;width:49%;height:15em;text-align:center;overflow:hidden;position:absolute;right:6%;top:44.2%;z-index:2;background:#fff}
+#skin2 .gallery .photo3{display:block;width:49%;height:15em;text-align:center;overflow:hidden;position:absolute;left:3.8%;top:77.3%;z-index:3;background:#fff}
+#skin2 .gallery .dday{display:block;width:20%;position:absolute;right:11.5%;top:6.3%;font-size:1.5em;color:#fff;text-align:center;font-weight:bold;letter-spacing:-0.063em;line-height:1.3em;z-index:5}
+#skin2 .gallery .dday span{display:block;font-size:1.6em;margin-top:-1%}
+#skin2 .gallery .dateinfo{display:block;width:37%;letter-spacing:-0.063em;color:#00a0b4;font-weight:bold;position:absolute;left:5%;top:44.5%;z-index:5}
+#skin2 .gallery .dateinfo span{display:block}
+#skin2 .gallery .dateinfo span.date{font-size:1.5em}
+#skin2 .gallery .dateinfo span.add{margin-top:0.3em}
+#skin2 .gallery .btn{display:block;width:40%;height:4em;position:absolute;right:5%;bottom:6%;z-index:5}
+#skin2 .gallery .bg{position:relative;z-index:4}
+/***  모시는글 ***/
+#skin2 .write{width:100%;height:100%;zoom:1}
+#skin2 .write:after{content:"";display:block;font-size:0;height:0;line-height:0;clear:both}
+#skin2 .write .writebox{display:block;width:100%;padding:10% 0 10% 0;overflow:hidden;text-align:center;background:#fff;zoom:1}
+#skin2 .write .writebox:after{content:"";display:block;font-size:0;height:0;line-height:0;clear:both}
+#skin2 .write .writebox table{width:100%;margin:0 auto}
+#skin2 .write .writebox table td{width:100%;height:16.65em;font-size:1.5em;line-height:1.438em;text-align:center;color:#000;padding:0;margin:0}
+#skin2 .write .dateinfo {width:100%;text-align:center;color:#000;overflow:hidden;position:relative;/*left:0;bottom:15em;z-index:2*/}
+#skin2 .write .dateinfo span{display:block;width:100%;text-align:center;position:absolute;left:0;top:30%;z-index:1}
+#skin2 .write .dateinfo span strong{font-size:1.5em}
+#skin2 .write .dateinfo span em{display:block;font-size:1.2em;margin-top:1.5%;}
+#skin2 .write .bg{position:relative;z-index:0}
+/***  찾아오시는길 ***/
+#skin2 .map{height:100%;position:relative;background:#fff;zoom:1}
+#skin2 .map:after{content:"";display:block;font-size:0;height:0;line-height:0;clear:both}
+#skin2 .map .map_area{width:100%;text-align:center}
+#skin2 .map .map_area img{margin:2% 0 5% 0}
+#skin2 .map ul{clear:both;overflow:hidden;margin:0 auto;background:#414141;zoom:1}
+#skin2 .map ul:after{content:"";display:block;font-size:0;height:0;line-height:0;clear:both}
+#skin2 .map ul li{float:left;width:20%;*width:19.5%;padding:3% 0 3% 0;text-align:center}
+
+/****** SKIN 3 ******/
+#skin3{width:100%;height:100%;margin:0 auto;zoom:1;background:#fff}
+#skin3:after{content:"";display:block;font-size:0;height:0;line-height:0;clear:both}
+/*** 메인비주얼 ***/
+#skin3 .visual h1{width:100%;position:relative}
+#skin3 .visual h1 em{display:block;width:100%;font-size:3.4em;letter-spacing:-0.1em;text-align:center;position:absolute;left:0;top:0;z-index:2}
+#skin3 .visual .txtbox{width:100%;position:relative}
+#skin3 .visual h2{width:39%;text-align:left;font-size:1.8em;letter-spacing:-0.125em;position:absolute;right:0;top:67%;z-index:2}/**/
+#skin3 .visual .photo{display:block;width:55.9%;height:95%;text-align:center;overflow:hidden;position:absolute;left:3.3%;top:0;z-index:1/*3;background:blue;opacity:0.4;filter:alpha(opacity=40)*/}
+#skin3 .visual h3.txt{width:39%;text-align:left;font-size:1.24em;letter-spacing:-0.125em;line-height:1.438em;position:absolute;right:0;top:43%;z-index:2}/*;background:green;opacity:0.4;filter:alpha(opacity=40)*/
+#skin3 .visual h3 span{font-size:1.26em;;z-index:2}
+#skin3 .visual .infobox{width:100%;position:relative}
+#skin3 .visual .info{width:95%;height:5.3em;text-align:left;font-size:1.24em;letter-spacing:-0.125em;word-break:break-all;padding:0;margin:0;position:absolute;left:5%;top:30%;z-index:2}
+#skin3 .visual .info span{display:block;z-index:2}
+#skin3 .visual .info span.date{font-size:1.8em;padding-bottom:0.15em}
+#skin3 .visual .bg{position:relative;z-index:0}
+/***  갤러리 ***/
+#skin3 .gallery{width:100%;height:100%;position:relative;background:#fff;overflow:hidden}
+#skin3 .gallery .photo1{display:block;width:47.2%;text-align:center;overflow:hidden;position:absolute;left:3.2%;top:8.5%;z-index:1;background:#fff}
+#skin3 .gallery .photo2{display:block;width:66.5%;text-align:center;overflow:hidden;position:absolute;right:3.4%;top:47.5%;z-index:2;background:#fff}
+#skin3 .gallery .dday{display:block;width:43%;position:absolute;right:5.4%;top:17.5%;font-size:2.5em;font-style:italic;color:#e22c2c;text-align:center;;font-weight:bold;letter-spacing:-0.1em;line-height:1.3em;z-index:5}
+#skin3 .gallery .btn{display:block;width:46%;height:4.5%;position:absolute;right:3.4%;top:24%;z-index:5}
+#skin3 .gallery .bg{position:relative;z-index:4}
+/***  모시는글 ***/
+#skin3 .write{width:100%;height:100%}
+#skin3 .write .writebox{display:block;width:100%;overflow:hidden;text-align:center;position:relative;/*background:green;opacity:0.4;filter:alpha(opacity=40)*/}
+#skin3 .write .writebox table{width:100%;margin:0 auto;position:absolute;left:center;top:0;z-index:2;}
+#skin3 .write .writebox table td{width:100%;height:16.65em;font-size:1.5em;line-height:1.438em;text-align:center;color:#000;padding:0;margin:0}
+#skin3 .write .dateinfo {width:100%;text-align:center;color:#000;position:relative;/*left:0;bottom:15em;z-index:2*/}
+#skin3 .write .dateinfo span{display:block;width:100%;text-align:center;position:absolute;left:0;top:0;z-index:1}
+#skin3 .write .dateinfo span span{display:block;text-align:center;font-size:1.5em;position:relative}
+#skin3 .write .dateinfo span em{display:block;font-size:1.2em;margin-top:1.5%;}
+#skin3 .write .bg{position:relative;z-index:0}
+/***  찾아오시는길 ***/
+#skin3 .map{height:100%;position:relative;background:#fff;zoom:1;background:#fff}
+#skin3 .map:after{content:"";display:block;font-size:0;height:0;line-height:0;clear:both}
+#skin3 .map .map_area{width:100%;text-align:center;position:relative}
+#skin3 .map .map_area .mapimg{width:93.5%;height:100%;position:absolute;top:0;left:3.4%;z-index:1}
+#skin3 .map ul{clear:both;overflow:hidden;margin:0 auto;background:#414141;zoom:1}
+#skin3 .map ul:after{content:"";display:block;font-size:0;height:0;line-height:0;clear:both}
+#skin3 .map ul li{float:left;width:20%;*width:19.5%;padding:3% 0 3% 0;text-align:center}
+#skin3 .map .bg{position:relative;z-index:2}
+
+/****** SKIN 4 ******/
+#skin4{width:100%;height:100%;margin:0 auto;zoom:1;background:#fff}
+#skin4:after{content:"";display:block;font-size:0;height:0;line-height:0;clear:both}
+/*** 메인비주얼 ***/
+#skin4 .visual{position:relative}
+#skin4 .visual .con_img{overflow:hidden;position:absolute;left:13.8%;top:13.8%;width:73%;height:54%;z-index:0}
+#skin4 .visual h1{overflow:hidden;position:absolute;left:32%;top:71.3%;width:36%;height:4.5%;text-align:center;font-size:1.8em;z-index:2}
+#skin4 .visual h1 span{display:none}
+#skin4 .visual h2{position:absolute;left:32%;top:81%;width:36%;height:7%;text-align:center;font-size:1.25em;color:#fff;z-index:2}
+#skin4 .visual p{position:absolute;left:22%;top:88%;width:75%;text-align:left;font-size:1.24em;color:#fff;z-index:2}
+#skin4 .visual p span{display:block;letter-spacing:-0.05em;font-size:1.8em}
+#skin4 .visual p em{text-decoration:normal}
+#skin4 .visual .bg{position:relative;z-index:1}
+/***  갤러리 ***/
+#skin4 .gallery{width:100%;height:100%;position:relative}
+#skin4 .gallery .bg{position:relative;z-index:4}
+#skin4 .gallery .photo1{width:62.3%;height:23.5%;text-align:center;overflow:hidden;position:absolute;left:4.8%;top:12.1%;z-index:3}
+#skin4 .gallery .photo2{width:62.3%;height:23.5%;text-align:center;overflow:hidden;position:absolute;right:5%;top:36.35%;z-index:2}
+#skin4 .gallery .photo3{width:45.6%;height:38.3%;text-align:center;overflow:hidden;position:absolute;left:4.8%;top:60.6%;z-index:1}
+#skin4 .gallery p{width:42.9%;height:6%;font-size:3em;font-weight:bold;color:#000;text-align:center;overflow:hidden;vertical-align:top;position:absolute;right:5%;top:72.5%;z-index:6}
+#skin4 .gallery .btn{width:42.9%;height:16.5%;position:absolute;right:5%;bottom:1.3%;z-index:5}
+/***  모시는글 ***/
+#skin4 .write{width:100%;height:100%;position:relative;zoom:1}
+#skin4 .write:after{content:"";display:block;font-size:0;height:0;line-height:0;clear:both}
+#skin4 .write .writebox{position:absolute;left:0;top:35%;width:100%;padding:10% 0 10% 0;overflow:hidden;text-align:center;z-index:1}
+#skin4 .write .writebox:after{content:"";display:block;font-size:0;height:0;line-height:0;clear:both}
+#skin4 .write .writebox table{width:100%;margin:0 auto}
+#skin4 .write .writebox table td{width:100%;height:16.65em;font-size:1.5em;line-height:1.438em;text-align:center;color:#000;padding:0;margin:0}
+#skin4 .write .bg{position:relative;z-index:0;}
+
+/****** SKIN 5 ******/
+#skin5{width:100%;height:100%;margin:0 auto;zoom:1;background:#fff}
+#skin5:after{content:"";display:block;font-size:0;height:0;line-height:0;clear:both}
+/*** 메인비주얼 ***/
+#skin5 .visual{position:relative}
+#skin5 .visual .con_img{overflow:hidden;position:absolute;left:3.5%;top:11.1%;width:93.1%;height:35.1%;z-index:0}
+#skin5 .visual h1{overflow:hidden;position:absolute;left:8.8%;bottom:15.9%;width:25.7%;height:3.7%;text-align:left;font-size:1.5em;z-index:2}
+#skin5 .visual h1 span{display:none}
+#skin5 .visual h2{width:24.2%;height:7%;text-align:left;font-size:1.5em;color:#000;z-index:2}
+#skin5 .visual h2.father{position:absolute;left:44%;bottom:12.5%}
+#skin5 .visual h2.mother{position:absolute;left:76%;bottom:12.5%}
+#skin5 .visual p{position:absolute;left:8%;top:86%;width:75%;text-align:left;font-size:1.245em;color:#383838;z-index:2}
+#skin5 .visual p span{display:block;letter-spacing:-0.05em;font-size:1.8em}
+#skin5 .visual p em{text-decoration:normal}
+#skin5 .visual .bg{position:relative;z-index:1}
+/* 싱글*/
+#skin5 .visual.single h1{width:24%;height:3.5%;text-align:left;position:absolute;left:65.8%;top:73.8%}
+#skin5 .visual.single h2.mother{width:32.5%;height:3.5%;text-align:right;position:absolute;left:6.9%;top:73.8%}
+/***  갤러리 ***/
+#skin5 .gallery{width:100%;height:100%;background:#203b2b;position:relative}
+#skin5 .gallery .bg{position:relative;z-index:0}
+#skin5 .gallery .photo1{width:47.6%;height:39.8%;text-align:center;overflow:hidden;position:absolute;left:12.5%;top:3.8%;z-index:3}
+#skin5 .gallery .photo2{width:60.1%;height:22.7%;text-align:center;overflow:hidden;position:absolute;right:4.4%;top:46.9%;z-index:2}
+#skin5 .gallery .photo3{width:57.4%;height:21.7%;text-align:center;overflow:hidden;position:absolute;left:6.5%;top:72.6%;z-index:1}
+#skin5 .gallery p{width:18.3%;height:3.5%;font-size:1.75em;font-weight:bold;color:#fff;text-align:center;overflow:hidden;vertical-align:top;position:absolute;left:8.5%;top:62.2%;z-index:6}
+#skin5 .gallery .btn{width:28.3%;height:12.5%;position:absolute;right:4.3%;bottom:5%;z-index:5}
+/***  모시는글 ***/
+#skin5 .write{width:100%;height:100%;position:relative;zoom:1}
+#skin5 .write:after{content:"";display:block;font-size:0;height:0;line-height:0;clear:both}
+#skin5 .write .writebox{position:absolute;left:0;top:25%;width:100%;padding-top:10%;overflow:hidden;text-align:center;z-index:1}
+#skin5 .write .writebox:after{content:"";display:block;font-size:0;height:0;line-height:0;clear:both}
+#skin5 .write .writebox table{width:100%;margin:0 auto}
+#skin5 .write .writebox table td{width:100%;height:16.65em;font-size:1.5em;line-height:1.438em;text-align:center;color:#000;padding:0;margin:0}
+#skin5 .write .dateinfo{width:100%;text-align:center;color:#000;position:absolute;left:0;top:68%;z-index:2}
+#skin5 .write .dateinfo p{width:100%;height:4%;font-size:1.2em;margin-bottom:2%;text-align:center;color:#000}
+#skin5 .write .dateinfo span{display:block;width:100%;font-size:1.2em;text-align:center}
+#skin5 .write .dateinfo em{display:block;font-size:1.2em;margin-top:1.5%;}
+#skin5 .write .bg{position:relative;z-index:0;}
+
+/****** SKIN 6 ******/
+#skin6{width:100%;height:100%;margin:0 auto;zoom:1;background:#fff}
+#skin6:after{content:"";display:block;font-size:0;height:0;line-height:0;clear:both}
+/*** 메인비주얼 ***/
+#skin6 .visual{position:relative}
+#skin6 .visual .con_img{overflow:hidden;position:absolute;left:15.4%;top:22.5%;width:69%;height:57.9%;z-index:0}
+#skin6 .visual h1{overflow:hidden;position:absolute;left:16%;top:12.4%;width:23.5%;height:3.1%;text-align:right;color:#fff;font-size:1.3em;z-index:2}
+#skin6 .visual h1 span{display:none}
+#skin6 .visual h2.fm{position:absolute;left:17.6%;top:16%;width:63.5%;height:2.8%;margin-left:-2%;text-align:center;z-index:2}
+#skin6 .visual h2.fm span{display:inline-block;margin-left:8%;color:#383837;font-size:1.5em;font-weight:bold}
+#skin6 .visual p.time{width:34.6%;height:7.5%;font-size:1.245em;color:#fff;text-align:center;position:absolute;left:3.1%;bottom:0;z-index:2}
+#skin6 .visual p.add{width:56.7%;height:7.5%;font-size:1.05em;color:#fff;text-align:center;position:absolute;right:3.1%;bottom:0;z-index:2}
+#skin6 .visual .bg{position:relative;z-index:1}
+/***  갤러리 ***/
+#skin6 .gallery{width:100%;height:100%;position:relative}
+#skin6 .gallery .bg{position:relative;z-index:0}
+#skin6 .gallery .photo1{width:71.8%;height:27.1%;text-align:center;overflow:hidden;position:absolute;left:6.8%;top:3.6%;z-index:3}
+#skin6 .gallery .photo2{width:57.6%;height:21.8%;text-align:center;overflow:hidden;position:absolute;right:6.4%;top:35.3%;z-index:2}
+#skin6 .gallery .photo3{width:43.5%;height:36.4%;text-align:center;overflow:hidden;position:absolute;left:9%;top:60.9%;z-index:1}
+#skin6 .gallery p{width:20.4%;height:3.2%;font-size:1.75em;font-weight:bold;color:#fff;text-align:center;vertical-align:top;position:absolute;right:13.6%;top:68.2%;z-index:6}
+#skin6 .gallery .btn{width:34.7%;height:13.6%;position:absolute;right:6.7%;top:83.2%;z-index:5;}
+/***  모시는글 ***/
+#skin6 .write{width:100%;height:100%;position:relative;zoom:1}
+#skin6 .write:after{content:"";display:block;font-size:0;height:0;line-height:0;clear:both}
+#skin6 .write .writebox{position:absolute;left:0;top:35%;width:100%;padding-top:10%;overflow:hidden;text-align:center;z-index:1}
+#skin6 .write .writebox:after{content:"";display:block;font-size:0;height:0;line-height:0;clear:both}
+#skin6 .write .writebox table{width:100%;margin:0 auto}
+#skin6 .write .writebox table td{width:100%;height:16.65em;font-size:1.5em;line-height:1.438em;text-align:center;color:#000;padding:0;margin:0}
+#skin6 .write .dateinfo{width:100%;text-align:center;color:#000;position:absolute;left:0;top:78%;z-index:2}
+#skin6 .write .dateinfo p{width:100%;height:4%;font-size:1.2em;margin-bottom:2%;text-align:center;color:#000}
+#skin6 .write .dateinfo span{display:block;width:100%;font-size:1.2em;text-align:center}
+#skin6 .write .dateinfo em{display:block;font-size:1.2em;margin-top:1.5%;}
+#skin6 .write .bg{position:relative;z-index:0;}
+
+/***  찾아오시는길 - 공통 ***/
+.maparea{height:100%;position:relative;background:#fff;zoom:1}
+.maparea:after{content:"";display:block;font-size:0;height:0;line-height:0;clear:both}
+.maparea .map_area{width:100%;margin-bottom:15px;text-align:center}
+.maparea .btnbox{position:relative;width:100%}
+.maparea .btnbox .btn1,.maparea .btnbox .btn2,.maparea .btnbox .btn3,.maparea .btnbox .btn4,.maparea .btnbox .btn5{display:block;height:100%;position:absolute;top:0;z-index:1}
+.maparea .btnbox .btn1{width:45.7%;left:0}
+.maparea .btnbox .btn2{width:13.3%;left:45.7%}
+.maparea .btnbox .btn3{width:13.3%;left:59%}
+.maparea .btnbox .btn4{width:13.3%;left:72.4%}
+.maparea .btnbox .btn5{width:13.3%;left:85.7%}
+
+.maparea .btnbox.type2 .btn1,.maparea .btnbox.type2 .btn2,.maparea .btnbox.type2 .btn3,.maparea .btnbox.type2 .btn4{height:46.8%}
+.maparea .btnbox.type2 .btn1{width:26.7%;left:22.6%;top:3.2%}
+.maparea .btnbox.type2 .btn2{width:26.7%;left:22.6%;top:50%}
+.maparea .btnbox.type2 .btn3{width:26.7%;left:70.4%;top:3.2%}
+.maparea .btnbox.type2 .btn4{width:26.7%;left:70.4%;top:50%}
+
+.maparea .w25 img{width:25%}
+.maparea .w50 img{width:50%}
+
+/* THANKS */
+.thanks{position:relative;width:100%;height:100%;background:#fff}
+.thanks .photo{display:block;width:48.5%;height:20.6%;text-align:center;overflow:hidden;position:absolute;left:26%;top:25.8%;z-index:0}
+.thanks .writebox{display:block;width:100%;/*height:9.5em;overflow:hidden;*/text-align:center;position:absolute;left:0;top:50%;z-index:2}
+.thanks .writebox table{width:60%;margin:0 auto}
+.thanks .writebox table td{width:100%;/*height:6.65em;*/font-size:1.2em;line-height:1.438em;text-align:center;color:#000;padding:0;margin:0;letter-spacing:-0.063em}
+.thanks .bg{position:relative;z-index:1}
+
+.thanks.type4 .photo{width:67.2%;height:25.3%;position:absolute;left:15.3%;top:37.4%;z-index:2}
+.thanks.type4 .writebox{position:absolute;left:0;top:67.3%}
+
+.thanks.type5 .photo{width:68.9%;height:26%;position:absolute;left:16.1%;top:27.7%;z-index:2}
+.thanks.type5 .writebox{position:absolute;left:0;top:57.3%}
+
+.thanks.type6 .photo{width:74.9%;height:28.3%;position:absolute;left:11.9%;top:5.2%;z-index:2}
+.thanks.type6 .writebox{position:absolute;left:0;top:50.6%}
+
+/* banner */
+#cot_tl_fixed {
+	position: fixed;
+	_position: absolute;
+	z-index: 99;
+	width: 100%;
+	text-align: center;
+	bottom: 0px;
+	right: 0px;
+	clip: rect(0 100% 100% 0);
+	_top: expression(document.documentElement.scrollTop+document.documentElement.clientHeight-this.clientHeight);
+	_left: expression(document.documentElement.scrollLeft + document.documentElement.clientWidth - offsetWidth);
+}
+
+#cot_tl_unfixed { 
+	_position: absolute;
+	z-index: 99;
+	width: 100%;
+	text-align: center;
+	bottom: 0px;
+	right: 0px;
+	clip: rect(0 100% 100% 0);
+	_top: expression(document.documentElement.scrollTop+document.documentElement.clientHeight-this.clientHeight);
+	_left: expression(document.documentElement.scrollLeft + document.documentElement.clientWidth - offsetWidth);
+}

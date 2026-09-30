@@ -1,0 +1,299 @@
+/*@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');*/
+
+/* reset */
+a, abbr, address, article, aside, audio, b, big, blockquote, body, canvas, caption, cite, code, dd, del, details, dfn, dialog, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, meter, nav, object, ol, output, p, pre, progress, q, rp, rt, ruby, s, samp, section, small, span, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video, xmp {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+h1, h2, h3, h4, h5, h6, strong {
+	font-weight: bold;
+}
+em, address {
+	font-weight: normal;
+	font-style: normal;
+}
+img {
+	max-width: 100%;
+	height: auto;
+}
+iframe {
+	max-width: 100%;
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+ul, ol, li {
+	list-style: none;
+}
+textarea {
+	overflow: auto;
+}
+button {
+	cursor: pointer;
+}
+
+/* base */
+body {
+	font-size: 20px;
+	line-height: 1.5;
+	color: #594c3b;
+	font-family:  '나눔고딕', 'NanumGothic', 'Nanum Gothic', '돋움', 'Dotum', sans-serif;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+strong, b, dt,
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 700;
+}
+input, textarea, select, option, button {
+	font-size: 100%;
+	font-family: inherit;
+}
+
+.clear:after,
+.row:after {
+	clear: both;
+	content: '';
+	display: block;
+}
+.only-sr {
+	overflow: hidden;
+	position: absolute;
+	top: -999999px;
+	width: 0;
+	height: 0;
+	font-size: 0;
+	line-height: 0;
+	visibility: hidden;
+}
+
+/* grid system */
+.row {
+}
+.row > * {
+	position: relative;
+	float: left;
+}
+.col2-1 {
+	width: 50%;
+}
+
+/* layout */
+body {
+	max-width: 720px;
+	margin: 0 auto;
+}
+
+/* layout | header */
+.site-header {
+	position: relative;
+}
+.site-header img {
+	display: block;
+}
+
+.site-logo {
+	position: absolute;
+	top: 20%;
+	width: 100%;
+	text-align: center;
+	letter-spacing: -1px;
+}
+.site-logo .name-wrap {
+	display: block;
+	font-weight: 400;
+}
+.site-logo .name {
+	font-size: 1.75em; /* 35px */
+	font-weight: 700;
+}
+.site-logo .name-wrap b {
+	font-size: 1.1em; /* 22px */
+	font-weight: 700;
+}
+.site-logo .parents {
+	display: block;
+	font-size: 1.1em; /* 22px */
+	line-height: 1;
+}
+.site-logo .parent:first-child {
+	margin-right: 2%;
+}
+
+.main-photo {
+	position: absolute;
+	top: 34.8%;
+	left: 22%;
+	right: 22%;
+}
+
+.event-info {
+	position: absolute;
+	left: 23%;
+	right: 20%;
+	top: 91.5%;
+}
+.event-info dt {
+	float: left;
+	clear: left;
+	width: 21%;
+	line-height: 1;
+}
+.event-info dd {
+	margin-bottom: 1.8%;
+	margin-left: 22%;
+	font-size: 1em; /* 20px */
+	letter-spacing: -1px;
+	font-weight: 700;
+	line-height: 1;
+	color: #fff;
+}
+.event-info .address {
+	font-size: .8em; /* 16px */
+	line-height: 1.2;
+}
+
+/* layout | main */
+.site-main {
+}
+
+.album {
+	position: relative;
+}
+.album img {
+	display: block;
+}
+.album .photo1,
+.album .photo2,
+.album .photo3,
+.dday-wrap,
+.more {
+	position: absolute;
+}
+.album .photo1 {
+	top: 12%;
+	left: 9.1%;
+	right: 42.7%;
+}
+.album .photo2 {
+	top: 38.6%;
+	left: 70.5%;
+	right: 7.6%;
+}
+.album .photo3 {
+	top: 64%;
+	left: 32.5%;
+	right: 10.1%;
+}
+.dday-wrap {
+	top: 20%;
+	left: 80%;
+	right: 0;
+}
+.dday {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	color: #fff;
+	font-size: 1.25em; /* 25px */
+	text-align: center;
+	letter-spacing: -1px;
+	text-indent: 5%;
+}
+.more{
+	top: 57.6%;
+	left: 0;
+	right: 71%;
+}
+
+.card-text {
+	position: relative;
+}
+.card-text img {
+	display: block;
+}
+.card-text .textarea {
+	
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	position: absolute;
+	top: 33.5%;
+	left: 20%;
+	right: 12%;
+	height: 37%;
+	font-size: 1.35em; /* 1.4em; */ /* 28px */
+	letter-spacing: -1px;
+	color: #000;
+	line-height: 1.2;
+}
+.card-text .textarea .from {
+	float: right;
+	margin-top: 16%;
+	margin-right: 10%;
+	font-size: 0.933em /* 28px */
+}
+.event-info2 {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 19%;
+	letter-spacing: -1px;
+	color: #000;
+	text-align: center;
+}
+.event-info2 .date {
+	font-weight: 700;
+	font-size: 1.35em; /* 27px */
+}
+.event-info2 .address {
+	font-size: 1.1em /* 22px */
+}
+
+/* layout | footer */
+.site-footer img {
+	display: block;
+}
+.site-footer a {
+	display: block;
+}
+.site-footer .wrapper {
+	background: #3c3c3c;
+}
+.link-sns p {
+	width: 20%;
+}
+
+
+/* IE7 */
+.ie7 .clear,
+.ie7 .row {
+	zoom: 1;
+}
+.ie7 input, .ie7 textarea, .ie7 select, .ie7 option, .ie7 button {
+	font-family:  '나눔고딕', 'NanumGothic', 'Nanum Gothic', '돋움', 'Dotum', sans-serif;
+}
+.ie7 a {
+	color: #444;
+}
+.ie7 a[href] {
+	cursor: pointer;
+}
+.ie7 .col2-1 {
+	width: 49.9%;
+}
+.ie7 .link-sns p {
+	width: 19.9%;
+}

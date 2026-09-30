@@ -1,0 +1,207 @@
+#!/usr/local/php/bin/php
+<?php
+/**
+ *  auto_delete_expired_invitation.php
+ *  @Desc   : 행사일(show_date) 기준 1년이 지난 초대장을
+ *            DB 레코드 + 업로드된 사진 파일까지 함께 삭제하는 배치 스크립트.
+ *            cafe24 크론서비스(CLI 실행) 전용. 프레임워크 의존 없이 독립 실행.
+ *
+ *  @사용법 (SSH 터미널에서 직접 실행하여 먼저 테스트)
+ *   1) 드라이런(실제 삭제 X, 목록만 확인):
+ *        /usr/local/php/bin/php /home/hosting_users/dejavumcom/cron_scripts/auto_delete_expired_invitation.php dryrun=1
+ *   2) 목록이 예상과 맞으면 실제 삭제:
+ *        /usr/local/php/bin/php /home/hosting_users/dejavumcom/cron_scripts/auto_delete_expired_invitation.php dryrun=0
+ *   3) 정상 동작 확인되면 cafe24 "크론서비스"에 명령어로 위 2번 경로(dryrun=0 포함)를
+ *      매일 새벽 한 번 실행하도록 등록.
+ *
+ *  @주의
+ *   - 이 스크립트는 실행 즉시 DB 레코드와 사진 파일을 "영구 삭제"합니다. 되돌릴 수 없습니다.
+ *   - 파일 업로드 후 반드시 chmod 750 으로 권한을 설정하세요 (cafe24 크론서비스 안내사항).
+ *   - 이 파일은 웹(www) 폴더가 아닌, 외부에서 URL로 접근할 수 없는 위치
+ *     (예: /home/hosting_users/dejavumcom/cron_scripts/)에 두는 것을 권장합니다.
+ */
+
+// ────────────────────────────────────────────────
+// 0. ★★★ DB 접속 정보 - DejavuConf.php 내용을 보고 아래 4줄만 직접 채워주세요 ★★★
+//     (비밀번호는 저에게 알려주지 마시고, 여기에만 직접 입력하세요)
+// ────────────────────────────────────────────────
+define('DB_HOST', 'localhost');           // DejavuConf.php에 적힌 DB 호스트로 수정 (보통 localhost)
+define('DB_USER', 'dejavumcom');       // DejavuConf.php에 적힌 DB 계정으로 수정
+define('DB_PASS', 'epwkqbtlwms2db');   // DejavuConf.php에 적힌 DB 비밀번호로 수정
+define('DB_NAME', 'dejavumcom');          // phpMyAdmin에서 이미 확인된 DB명 (그대로 두면 됨)
+
+// ────────────────────────────────────────────────
+// 1. 실행 파라미터 처리 (CLI 인자 방식: dryrun=1 / dryrun=0)
+// ────────────────────────────────────────────────
+if (php_sapi_name() !== 'cli') {
+	http_response_code(403);
+	die("이 스크립트는 CLI(크론)에서만 실행할 수 있습니다.\n");
+}
+
+$dryrun = true; // 기본값: 안전하게 드라이런
+foreach ($argv as $arg) {
+	if ($arg === 'dryrun=0') {
+		$dryrun = false;
+	}
+}
+
+$MAX_PROCESS_PER_RUN = 200; // 한 번 실행에 처리할 최대 건수 (타임아웃 방지용 안전장치)
+
+set_time_limit(0);
+
+// ────────────────────────────────────────────────
+// 2. DB 접속 (프레임워크 없이 독립적으로 mysqli 사용)
+// ────────────────────────────────────────────────
+$mysqli = @mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+if (!$mysqli) {
+	die("DB 접속 실패: " . mysqli_connect_error() . "\n");
+}
+mysqli_set_charset($mysqli, 'utf8');
+
+// ────────────────────────────────────────────────
+// 3. 사진 파일이 저장되는 실제 폴더 루트 목록
+//    (확인된 곳: /home/hosting_users/dejavumcom/www/m/data/thumbnail_img/{main_id 앞3자리}/{main_id}/)
+//    나머지는 혹시 모를 레거시 경로 - 없으면 조용히 건너뜁니다.
+// ────────────────────────────────────────────────
+$PHOTO_ROOTS = array(
+	'/home/hosting_users/dejavumcom/www/m/data/thumbnail_img',    // 확인된 실제 경로
+	'/home/hosting_users/dejavumcom/www/data/thumbnail_img',      // 혹시 모를 레거시 경로 1
+	'/home/hosting_users/dejavumcom/www/fph/data/thumbnail_img',  // 혹시 모를 레거시 경로 2
+);
+
+// ────────────────────────────────────────────────
+// 4. 삭제 대상 조회 (행사일이 오늘로부터 1년보다 더 지난 건)
+//    show_date가 'YYYY-MM-DD' 형식이 아닌 이상값(예: '0404')은
+//    안전을 위해 자동삭제 대상에서 제외하고 별도로 보고만 합니다.
+// ────────────────────────────────────────────────
+$cutoffDate = date('Y-m-d', strtotime('-1 year'));
+$validDateCond = "show_date REGEXP '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'";
+
+// 4-1. 형식이 이상해서 자동삭제 대상에서 제외된 건 (수동 확인용)
+$badResult = mysqli_query($mysqli, "SELECT main_id, show_date FROM tb_main WHERE show_date != '' AND NOT ({$validDateCond}) AND show_date < '{$cutoffDate}'");
+$badRows = array();
+if ($badResult) {
+	while ($r = mysqli_fetch_assoc($badResult)) $badRows[] = $r;
+}
+
+// 4-2. 전체 대상 건수 (LIMIT 없이 - 실제 총 규모 파악용)
+$totalCountResult = mysqli_query($mysqli, "SELECT COUNT(*) AS cnt FROM tb_main WHERE show_date != '' AND {$validDateCond} AND show_date < '{$cutoffDate}'");
+$totalCount = 0;
+if ($totalCountResult) {
+	$r = mysqli_fetch_assoc($totalCountResult);
+	$totalCount = (int)$r['cnt'];
+}
+
+$sql = "SELECT main_id, show_date FROM tb_main
+        WHERE show_date != ''
+        AND {$validDateCond}
+        AND show_date < '{$cutoffDate}'
+        ORDER BY show_date ASC
+        LIMIT {$MAX_PROCESS_PER_RUN}";
+
+$targets = array();
+$result = mysqli_query($mysqli, $sql);
+if ($result) {
+	while ($row = mysqli_fetch_assoc($result)) {
+		$targets[] = $row;
+	}
+} else {
+	die("조회 쿼리 실패: " . mysqli_error($mysqli) . "\n");
+}
+
+// ────────────────────────────────────────────────
+// 5. 결과 출력 및 삭제 처리
+// ────────────────────────────────────────────────
+echo "===================================================\n";
+echo ($dryrun ? "[드라이런 모드 - 실제 삭제 안 함]" : "[실제 삭제 모드]") . "\n";
+echo "기준일(cutoff): {$cutoffDate} 이전 행사 대상\n";
+echo "전체 삭제 대상 건수(형식 정상인 것만): {$totalCount}건\n";
+echo "이번 실행에서 처리할 건수(최대 {$MAX_PROCESS_PER_RUN}건씩): " . count($targets) . "건\n";
+echo "===================================================\n\n";
+
+if (!empty($badRows)) {
+	echo "▲ 날짜 형식이 이상해서 자동삭제에서 제외하고 수동 확인이 필요한 건 (" . count($badRows) . "건):\n";
+	foreach ($badRows as $b) {
+		echo "  - main_id={$b['main_id']} (show_date='{$b['show_date']}')\n";
+	}
+	echo "\n";
+}
+
+if (empty($targets)) {
+	echo "삭제 대상이 없습니다.\n";
+	mysqli_close($mysqli);
+	exit;
+}
+
+$deletedCnt = 0;
+$logLines = array();
+
+foreach ($targets as $row) {
+	$mainId = $row['main_id'];
+	$showDate = $row['show_date'];
+	$firstDir = substr($mainId, 0, 3);
+
+	echo "- main_id={$mainId} (행사일: {$showDate}) ";
+
+	if ($dryrun) {
+		echo "→ [드라이런] 삭제 예정\n";
+		continue;
+	}
+
+	// 5-1. 사진 폴더 삭제 (존재하는 루트만 삭제 시도)
+	foreach ($PHOTO_ROOTS as $root) {
+		$targetDir = $root . '/' . $firstDir . '/' . $mainId;
+		if (is_dir($targetDir)) {
+			dejavu_delete_dir_recursive($targetDir);
+		}
+	}
+
+	// 5-2. 연관 테이블 자식 레코드 삭제 (모두 main_id 기준)
+	$childTables = array('tb_2gimg', 'tb_gallery_photo', 'tb_appreciation', 'tb_guestbook', 'tb_invitation', 'tb_gallery');
+	foreach ($childTables as $tbl) {
+		mysqli_query($mysqli, "DELETE FROM {$tbl} WHERE main_id = " . intval($mainId));
+	}
+
+	// 5-3. 메인 레코드 삭제
+	mysqli_query($mysqli, "DELETE FROM tb_main WHERE main_id = " . intval($mainId));
+
+	$deletedCnt++;
+	$logLines[] = date('Y-m-d H:i:s') . "\tmain_id={$mainId}\tshow_date={$showDate}";
+	echo "→ 삭제 완료\n";
+}
+
+// ────────────────────────────────────────────────
+// 6. 실행 로그 파일 기록 (개인정보 없이 main_id/일시만 기록)
+// ────────────────────────────────────────────────
+if (!$dryrun && !empty($logLines)) {
+	$logFile = dirname(__FILE__) . '/auto_delete_log.txt';
+	file_put_contents($logFile, implode("\n", $logLines) . "\n", FILE_APPEND | LOCK_EX);
+}
+
+echo "\n===================================================\n";
+echo ($dryrun ? "드라이런 종료. 실제 삭제하려면 dryrun=0 으로 다시 호출하세요." : "총 {$deletedCnt}건 삭제 완료.");
+echo "\n===================================================\n";
+
+mysqli_close($mysqli);
+
+
+/**
+ * 폴더를 하위 파일/폴더까지 재귀적으로 완전히 삭제
+ */
+function dejavu_delete_dir_recursive($dir)
+{
+	if (!is_dir($dir)) return false;
+
+	$items = scandir($dir);
+	foreach ($items as $item) {
+		if ($item == '.' || $item == '..') continue;
+		$path = $dir . '/' . $item;
+		if (is_dir($path)) {
+			dejavu_delete_dir_recursive($path);
+		} else {
+			@unlink($path);
+		}
+	}
+	return @rmdir($dir);
+}
+?>

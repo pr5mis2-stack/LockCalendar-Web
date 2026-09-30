@@ -1,0 +1,20 @@
+# 1. º¸¾È Á¤Ã¥ È°¼ºÈ­ (°¡Àå Áß¿ä: Áöµµ¿Í ¿ÜºÎ ½ºÅ©¸³Æ® Â÷´Ü ÇØÁ¦)
+# ÀÌ ÄÚµå°¡ ÀÖ¾î¾ß http·Î È£ÃâµÇ´Â ³×ÀÌ¹ö Áöµµ API°¡ https È¯°æ¿¡¼­ ÀÛµ¿ÇÕ´Ï´Ù.
+<IfModule mod_headers.c>
+    Header set Content-Security-Policy "upgrade-insecure-requests"
+</IfModule>
+
+# 2. HTTPS °­Á¦ ÀÌµ¿ È°¼ºÈ­
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 3. PHP È¯°æ ¼³Á¤ (±âÁ¸ À¯Áö)
+PHP_VALUE memory_limit 1024M
+PHP_VALUE post_max_size 100M
+PHP_VALUE upload_max_filesize 100M
+PHP_VALUE max_execution_time 180
+# 4. ë§ˆì´ê·¸ë ˆì´ì…˜(PHP 8.4) í…ŒìŠ¤íŠ¸ ê¸°ê°„ ì„ì‹œ ì„¤ì • - ì•ˆì •í™” í›„ ì´ ì¤„ë“¤ì€ ë°˜ë“œì‹œ ì§€ìš°ê±°ë‚˜ offë¡œ ë°”ê¾¸ì„¸ìš”
+PHP_FLAG display_errors on
+PHP_VALUE error_reporting 32767
